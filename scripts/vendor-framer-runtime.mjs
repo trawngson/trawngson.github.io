@@ -111,6 +111,35 @@ if (homeMetadataSource.includes("robots:`noindex`")) {
   throw new Error("Could not find the expected homepage robots metadata.")
 }
 
+// Update only the first "Beyond the terminal" gallery card. The second card
+// intentionally retains the original VinSTEAM caption.
+const homepageContentPath = join(
+  output,
+  "F4sSbbRelN_RcV3ibiSfefa8wQbDzbTEZ5THliAdCIY.DoGmo9G0.mjs",
+)
+let homepageContentSource = await readFile(homepageContentPath, "utf8")
+const oldFirstGalleryProp =
+  "vPPoaq4Qp:`At VTEC's VinSTEAM Innovation Challenge 2025`"
+const newFirstGalleryProp =
+  "vPPoaq4Qp:`At Student Council hosting Serenade Prom 2026`"
+
+if (!homepageContentSource.includes(newFirstGalleryProp)) {
+  const firstGalleryPropIndex = homepageContentSource.indexOf(
+    oldFirstGalleryProp,
+  )
+  if (firstGalleryPropIndex < 0) {
+    throw new Error("Could not find the first Beyond the terminal caption.")
+  }
+
+  homepageContentSource =
+    homepageContentSource.slice(0, firstGalleryPropIndex) +
+    newFirstGalleryProp +
+    homepageContentSource.slice(
+      firstGalleryPropIndex + oldFirstGalleryProp.length,
+    )
+  await writeFile(homepageContentPath, homepageContentSource)
+}
+
 const pages = [
   ["index.html", ""],
   ["works/index.html", "../"],
@@ -126,6 +155,19 @@ for (const [file, prefix] of pages) {
     /https:\/\/framerusercontent\.com\/sites\/5Kx2XLMGy1pa7UdUQDRO4o\/([^"'<> ]+\.mjs)/g,
     `${prefix}assets/framer/$1`,
   )
+
+  if (file === "index.html") {
+    const firstGalleryCaptionPattern =
+      /(<img\b[^>]*\bsrc="assets\/images\/y693z1QYyOBCt6uxrYEhvwblA\.avif"[^>]*>[\s\S]*?<p\b[^>]*>)At VTEC's VinSTEAM Innovation Challenge 2025(<\/p>)/g
+    html = html.replace(
+      firstGalleryCaptionPattern,
+      "$1At Student Council hosting Serenade Prom 2026$2",
+    )
+    if (!html.includes("At Student Council hosting Serenade Prom 2026")) {
+      throw new Error("Could not update the first SSR gallery caption.")
+    }
+  }
+
   await writeFile(path, html)
 }
 

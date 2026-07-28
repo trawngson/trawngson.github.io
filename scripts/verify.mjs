@@ -52,6 +52,12 @@ for (const page of pages) {
   ) {
     errors.push(`${page}: canonical metadata does not match the main domain`)
   }
+  if (
+    page === "index.html" &&
+    !html.includes("At Student Council hosting Serenade Prom 2026")
+  ) {
+    errors.push(`${page}: first Beyond the terminal caption was not updated`)
+  }
 
   const attributePattern = /\b(?:href|src)="([^"]+)"/g
   for (const match of html.matchAll(attributePattern)) {
@@ -131,6 +137,21 @@ for (const module of modules) {
       `${module} import graph`,
     )
   }
+}
+
+const homepageContentModule = await readFile(
+  join(
+    framerDirectory,
+    "F4sSbbRelN_RcV3ibiSfefa8wQbDzbTEZ5THliAdCIY.DoGmo9G0.mjs",
+  ),
+  "utf8",
+)
+if (
+  !homepageContentModule.includes(
+    "vPPoaq4Qp:`At Student Council hosting Serenade Prom 2026`",
+  )
+) {
+  errors.push("homepage content module: first gallery caption was not updated")
 }
 
 if (errors.length > 0) {
