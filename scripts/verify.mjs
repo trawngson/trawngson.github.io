@@ -113,6 +113,9 @@ for (const module of modules) {
   ) {
     errors.push(`${module}: contains the optional remote Framer editor loader`)
   }
+  if (source.includes("robots:`noindex`")) {
+    errors.push(`${module}: still contains a noindex metadata directive`)
+  }
   if (
     source.includes(
       "https://framerusercontent.com/sites/5Kx2XLMGy1pa7UdUQDRO4o/",

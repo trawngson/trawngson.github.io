@@ -98,6 +98,19 @@ if (editorStartIndex >= 0) {
   throw new Error("Could not find the expected Framer editor loader.")
 }
 
+// Keep the homepage indexable after Framer's client metadata hydrates.
+const homeMetadataPath = join(output, "GvB3jHHOH.B_Aq3xp5.mjs")
+let homeMetadataSource = await readFile(homeMetadataPath, "utf8")
+if (homeMetadataSource.includes("robots:`noindex`")) {
+  homeMetadataSource = homeMetadataSource.replace(
+    "robots:`noindex`",
+    "robots:`max-image-preview:large`",
+  )
+  await writeFile(homeMetadataPath, homeMetadataSource)
+} else if (!homeMetadataSource.includes("robots:`max-image-preview:large`")) {
+  throw new Error("Could not find the expected homepage robots metadata.")
+}
+
 const pages = [
   ["index.html", ""],
   ["works/index.html", "../"],
