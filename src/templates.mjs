@@ -527,6 +527,20 @@ function gallery(project) {
   return ""
 }
 
+function demoBlock(project) {
+  const d = project.demo
+  if (!d) return ""
+  return `<section class="demo" aria-labelledby="demo-title">
+  <h2 id="demo-title" class="section-title" data-split>${esc(d.title)}</h2>
+  <figure class="demo-figure" data-reveal>
+    <video class="demo-video" muted loop playsinline preload="none" poster="${IMG}${d.poster}" width="${d.width}" height="${d.height}" aria-label="${attr(d.label)}" data-autoplay>
+      <source src="${IMG}${d.video}" type="video/mp4">
+    </video>
+    <figcaption>${esc(d.caption)}</figcaption>
+  </figure>
+</section>`
+}
+
 function codeBlock(project) {
   const c = project.code
   if (!c) return ""
@@ -564,6 +578,7 @@ export function projectPage(project, next) {
       ${project.overview.map((p) => `<p data-reveal>${esc(p)}</p>`).join("\n      ")}
     </div>
   </div>
+  ${demoBlock(project)}
   <section class="highlights" aria-labelledby="hl-title">
     <h2 id="hl-title" class="section-title" data-split>Highlights</h2>
     <ul class="highlight-grid" data-stagger>

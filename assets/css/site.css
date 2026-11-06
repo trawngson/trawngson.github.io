@@ -360,7 +360,7 @@ h1, h2, h3, p, figure, dl, dd { margin: 0; }
   38%, 44% { transform: rotate(0) scaleX(1); }
   52%, 64% { transform: rotate(36deg) scaleX(1); }
   72%, 76% { transform: rotate(0) scaleX(1); }
-  83%, 94% { transform: rotate(0) scaleX(0.32); }
+  83%, 94% { transform: translateY(-9%) rotate(0) scaleX(1); }
   100% { transform: rotate(0) scaleX(1); }
 }
 @keyframes st-next { 0%, 18% { opacity: 0; } 20%, 34% { opacity: 1; } 37%, 100% { opacity: 0; } }
@@ -613,6 +613,14 @@ h1, h2, h3, p, figure, dl, dd { margin: 0; }
 .viewer .btn--ghost::before { background: var(--sky); }
 .viewer .btn--ghost:hover { color: var(--navy); }
 .viewer iframe { display: block; width: 100%; height: min(80vh, 760px); border: 0; background: #edf2ee; }
+
+.demo { max-width: 920px; margin: clamp(100px, 15vh, 150px) auto 0; padding-inline: var(--gutter); text-align: center; }
+.demo-figure { margin-top: 36px; }
+.demo-video {
+  display: block; width: 100%; height: auto; border-radius: 12px; background: #1b1f2b;
+  box-shadow: 0 0 0 0.5px rgb(0 0 0 / 0.25), 0 30px 70px -30px rgb(0 22 102 / 0.55);
+}
+.demo-figure figcaption { margin: 14px auto 0; max-width: 60ch; font-size: 0.92rem; color: var(--muted); }
 
 .code { max-width: 920px; margin: clamp(100px, 15vh, 150px) auto 0; padding-inline: var(--gutter); text-align: center; }
 .code-window { margin-top: 36px; border-radius: 20px; overflow: hidden; background: #0d1330; text-align: left; box-shadow: 0 40px 70px -50px rgb(0 22 102 / 0.8); }

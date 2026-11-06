@@ -82,6 +82,23 @@
     })
   })
 
+  // Demo videos play silently while on screen. With reduced motion they stay
+  // on their poster frame and show controls instead.
+  safely("videos", () => {
+    const calm = matchMedia("(prefers-reduced-motion: reduce)").matches
+    $$("video[data-autoplay]").forEach((video) => {
+      if (calm) {
+        video.controls = true
+        return
+      }
+      whileVisible(
+        video,
+        () => video.play().catch(() => (video.controls = true)),
+        () => video.pause(),
+      )
+    })
+  })
+
   safely("to-top", () => {
     $$("[data-to-top]").forEach((btn) =>
       btn.addEventListener("click", () => {

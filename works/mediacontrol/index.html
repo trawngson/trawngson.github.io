@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MediaControl | Nguyen Truong Son</title>
-<meta name="description" content="Control Spotify with your hand: turn it one way to skip, the other way to go back, and hold it edge-on to play or pause.">
+<meta name="description" content="Control Spotify with your hand: point your fingers one way to skip, the other way to go back, and raise your hand to play or pause.">
 <link rel="canonical" href="https://truongson.me/works/mediacontrol/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Nguyen Truong Son">
 <meta property="og:title" content="MediaControl | Nguyen Truong Son">
-<meta property="og:description" content="Control Spotify with your hand: turn it one way to skip, the other way to go back, and hold it edge-on to play or pause.">
+<meta property="og:description" content="Control Spotify with your hand: point your fingers one way to skip, the other way to go back, and raise your hand to play or pause.">
 <meta property="og:url" content="https://truongson.me/works/mediacontrol/">
 <meta property="og:image" content="https://truongson.me/assets/img/og-card.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -56,7 +56,7 @@
     <a class="back-link" href="/works/"><span aria-hidden="true">←</span> All works</a>
     <p class="eyebrow" data-reveal><span>2024</span><span>Computer vision tool</span></p>
     <h1 class="project-title" data-split>MediaControl</h1>
-    <p class="project-tagline" data-reveal>Control Spotify with your hand. Turn it one way to skip, the other way to go back, and hold it edge-on to play or pause.</p>
+    <p class="project-tagline" data-reveal>Control Spotify with your hand. Point your fingers one way to skip, the other way to go back, and raise your hand to play or pause.</p>
     <div data-reveal><ul class="tags"><li>Python</li><li>OpenCV</li><li>MediaPipe</li></ul></div>
   </header>
   <figure class="project-cover"><div class="cover cover--tool cover--media" role="img" aria-label="Animated hand skeleton switching Spotify tracks" style="view-transition-name: cover-mediacontrol">
@@ -89,6 +89,15 @@
       <p data-reveal>A two-second cooldown keeps one gesture from firing twice, and the live FPS and the last command are drawn on top of the video.</p>
     </div>
   </div>
+  <section class="demo" aria-labelledby="demo-title">
+  <h2 id="demo-title" class="section-title" data-split>See it in action</h2>
+  <figure class="demo-figure" data-reveal>
+    <video class="demo-video" muted loop playsinline preload="none" poster="/assets/img/projects/mediacontrol-demo.webp" width="812" height="480" aria-label="Son in front of his webcam with 21 hand landmarks drawn on his hand, switching Spotify tracks with gestures" data-autoplay>
+      <source src="/assets/img/projects/mediacontrol-demo.mp4" type="video/mp4">
+    </video>
+    <figcaption>The original demo from the repo: raising my hand plays or pauses, and pointing my fingers left or right skips forward or back.</figcaption>
+  </figure>
+</section>
   <section class="highlights" aria-labelledby="hl-title">
     <h2 id="hl-title" class="section-title" data-split>Highlights</h2>
     <ul class="highlight-grid" data-stagger>

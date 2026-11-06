@@ -92,12 +92,13 @@ for (const required of ["CNAME", ".nojekyll", "assets/css/site.css", "assets/js/
 }
 if ((await readFile(join(root, "CNAME"), "utf8")).trim() !== "truongson.me") fail("CNAME must be truongson.me")
 
-// Keep the repository light: flag any single image over 600 KB.
+// Keep the repository light: images up to 600 KB, videos up to 1.5 MB.
 const walk = async (dir) => {
   for (const entry of await readdir(join(root, dir), { withFileTypes: true })) {
     const rel = join(dir, entry.name)
+    const limit = rel.endsWith(".mp4") ? 1536 : 600
     if (entry.isDirectory()) await walk(rel)
-    else if ((await stat(join(root, rel))).size > 600 * 1024) fail(`${rel}: larger than 600 KB`)
+    else if ((await stat(join(root, rel))).size > limit * 1024) fail(`${rel}: larger than ${limit} KB`)
   }
 }
 await walk("assets/img")

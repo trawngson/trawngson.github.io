@@ -323,9 +323,9 @@ export const projects = [
     categories: ["AI & Vision", "Tools & Games"],
     tags: ["Python", "OpenCV", "MediaPipe"],
     summary:
-      "Control Spotify with your hand: turn it one way to skip, the other way to go back, and hold it edge-on to play or pause.",
+      "Control Spotify with your hand: point your fingers one way to skip, the other way to go back, and raise your hand to play or pause.",
     tagline:
-      "Control Spotify with your hand. Turn it one way to skip, the other way to go back, and hold it edge-on to play or pause.",
+      "Control Spotify with your hand. Point your fingers one way to skip, the other way to go back, and raise your hand to play or pause.",
     cover: { type: "tool-media", alt: "Animated hand skeleton switching Spotify tracks" },
     meta: [
       ["Role", "Solo project"],
@@ -333,6 +333,15 @@ export const projects = [
       ["Platform", "macOS"],
     ],
     links: [{ label: "View on GitHub", href: "https://github.com/trawngson/mediacontrol" }],
+    demo: {
+      title: "See it in action",
+      video: "projects/mediacontrol-demo.mp4",
+      poster: "projects/mediacontrol-demo.webp",
+      width: 812,
+      height: 480,
+      label: "Son in front of his webcam with 21 hand landmarks drawn on his hand, switching Spotify tracks with gestures",
+      caption: "The original demo from the repo: raising my hand plays or pauses, and pointing my fingers left or right skips forward or back.",
+    },
     overview: [
       "MediaControl reads a webcam feed with OpenCV, tracks the 21 landmarks of one hand with MediaPipe, and turns simple hand poses into Spotify commands sent through AppleScript.",
       "A two-second cooldown keeps one gesture from firing twice, and the live FPS and the last command are drawn on top of the video.",
