@@ -1,0 +1,168 @@
+{
+  "art/almond-portrait": {
+    "format": "webp",
+    "width": 600,
+    "height": 840,
+    "widths": [
+      400,
+      600
+    ],
+    "preview": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAAAQBgCdASoYACIAPt1ip0yopiOiKrgN+RAbiUyyKdxlLxJD/AN0KVJygrZFUUro984NtzcGdhZm7QAA/uBCCcgFNgDKr4+jJG+8tYtsrC2auCXyY+kiCqF8y57dE4JQ1bkwbmNw0v5Qku6quIeAyxTgAn30b7kRhpTqFigG0rPBIn8piWchplp2BA9aJnjQTXrwgAAA"
+  },
+  "art/gleaners-portrait": {
+    "format": "webp",
+    "width": 600,
+    "height": 840,
+    "widths": [
+      400,
+      600
+    ],
+    "preview": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAAAQBgCdASoYACIAPtleqUyoJaQlsBqqqQAbCWUAyMu+Qi9elqOK1xrJROwM3maihYw/3uibYYTjc2AA/t6ARHD2OfCkWeBVaqSeCyec02B0Qt9ZTYU2CxC5uL+5RbZlJUtlPnlWQvmXB/RePsWvI7GIdc9kGHJsLKSxu/t73jFinmkFVXwwrp+9yZxDQ5H6L5dMa5KWJq8S4AAA"
+  },
+  "art/grandejatte-portrait": {
+    "format": "webp",
+    "width": 600,
+    "height": 840,
+    "widths": [
+      400,
+      600
+    ],
+    "preview": "data:image/webp;base64,UklGRsIAAABXRUJQVlA4ILYAAACQBgCdASoYACIAPtFYnkyoJSKiNVgMAQAaCWIAtOgX335r3dQ1BPB0QxVg//e7KRQNkBSaCPBeLHN4cIAAAP6h5lgWW80k06HJXjc0mbKCNfBLMqf32uGyeE5NvCros6zb/JaIxkn04vru3d68WAUnTRJIKndx7A3kYsvrKjE2+UNLr8ycKHFG6lCf9Fr2s36m9C414MaOiNqqW3kiAJo0i04/QTShuzatsjGwf9In9eB2X4AAAA=="
+  },
+  "art/greatwave-portrait": {
+    "format": "webp",
+    "width": 600,
+    "height": 840,
+    "widths": [
+      400,
+      600
+    ],
+    "preview": "data:image/webp;base64,UklGRgIBAABXRUJQVlA4IPYAAABwBwCdASoYACIAPt1mrVEopSQipWmZEBuJQBdmYADPCF4gAXZyjAzJSQUEIrJjFV1tfHrIYjhePWjgwjU5MwbPntaNgAD+8dS3ApE1f60FN0XqBa+4VzGu20As3ksNxlHr4wwCv4DKmXm4e+fzHCwYqIlfbAB0Z5mDWf/iQMuDHQbAqqu9nLzFFBMQWFpI7fs0cOm+OSL9q4X82PZZ+hksCeBtK0FQNAVqlKDrDV106QYLhwOeOl/wSk7MuAAs6eJ0DyWiw2ukLI3IvmvPPESTIrP3r3BrmysXfkMx1yA+EHkRVZaZrmE+sNj9MXJbnWTxPqx8AAA="
+  },
+  "art/greatwave-wide": {
+    "format": "webp",
+    "width": 2400,
+    "height": 1500,
+    "widths": [
+      800,
+      1200,
+      1600,
+      2400
+    ],
+    "preview": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAADwAwCdASoYAA8APt1apkyopSOiMAgBEBuJQBOgA3YyowmqmvkUw9W8AP7oOq8XBa7eq/q+yZZHgpfZdX2hsCA52pWF37IFIXgRDL2WstVTydcAWWGaihcxDHsH/kuwNtp2FVk22bXDrP5hN+yLbdZ/+2aKxc3LjPExeQYwAAA="
+  },
+  "art/harvesters-portrait": {
+    "format": "webp",
+    "width": 600,
+    "height": 840,
+    "widths": [
+      400,
+      600
+    ],
+    "preview": "data:image/webp;base64,UklGRroAAABXRUJQVlA4IK4AAAAwBgCdASoYACIAPt1eqE2opSQiMBVaqRAbiUAYyIE8OMHbtXNCm2VYxsnIiwbQa43d8LdlGTPNY/QAAP5gckrOPuktJXEsuXvUkQgCFj9uFGW0chjF3KEUJ+AlQPCs8J9z7j8xCUXej/jqdv0AIP0ggghOohlxNH2LfO68zc132MePNTMMlo7oyZpLDdpE/sN27lxeqrd0ibQNf7qYCzfcaGGdHU9nZRg7C4TAAAA="
+  },
+  "art/sower-portrait": {
+    "format": "webp",
+    "width": 600,
+    "height": 840,
+    "widths": [
+      400,
+      600
+    ],
+    "preview": "data:image/webp;base64,UklGRsoAAABXRUJQVlA4IL4AAADwBgCdASoYACIAPtlao0yoJSMiNVgIAQAbCWgAzBwWlKzQZdXA7d2YONRFptxvqglQ2VdR8CpU9o2Fj4vAXNkAAMrxT/Rp8QRpdML76sAOYZCdEdc/7G9fgp/QoU49LjMq0xs0pkw4/NtO40Gd3RNNk6pyJoA/tBV9UvXHQyZngYwbYIKzcMhNF7V3ufUtFNJFUG1DhT+yyJ/rXIrE80hx0e+HygavST+TpDS1gcks4934ChPjMgFO/wNjOfoA"
+  },
+  "art/sunrise-portrait": {
+    "format": "webp",
+    "width": 600,
+    "height": 840,
+    "widths": [
+      400,
+      600
+    ],
+    "preview": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAACQBACdASoYACIAPt1ip0yxJiOiMBqqqiAbiWMAvzg5TyTcK2Ac4o4RLJuKOzAA/c5pNI3Kxv2ByHUT8bJg3lb0CKY1I5v5D9Oy5IlprUcOvNSsyCgSWF0M07xDJEhaGSER+mugAAA="
+  },
+  "art/sunrise-wide": {
+    "format": "webp",
+    "width": 1600,
+    "height": 1000,
+    "widths": [
+      800,
+      1200,
+      1600
+    ],
+    "preview": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAACwAwCdASoYAA8APt1cpkyopSOiMAgBEBuJYwC7AAjUwe6Lp7HBQAD97I2X+95f6RYXAIWc3lH8bcT1c0s7rn+SviWJEBD/W2FmCAAA"
+  },
+  "art/waterlilies-portrait": {
+    "format": "webp",
+    "width": 600,
+    "height": 840,
+    "widths": [
+      400,
+      600
+    ],
+    "preview": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAABwBACdASoYACIAPt1YpU2opKMiMBVdURAbiWMAvnumhTUGicDoK7bs4nl2AAD+snsGbX3TekZBCb5UPLxZReaRlRYHslqMNLqf+nKEqwl9/WgRgA8+jXY7OKVrq5S0QGw0jIA8bIhRtxKymxbsgH58gxLc+qFrVlc0QzwHWd+oAAAA"
+  },
+  "people/serenade-prom-2026": {
+    "format": "avif",
+    "width": 1600,
+    "height": 1066,
+    "widths": [
+      800,
+      1200,
+      1600
+    ],
+    "preview": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAAAwBQCdASoYABAAPt1apkyopSOiMAgBEBuJbACdMoR4T5XTANRRAtrrUbeo7aRxKXArgAD+hz/lgcO4bXCkVcoEsk7U06hd4TJ7Z+9YfUraa8EGm+uW1CQKB51QzRX8cJYh+WpzDuIXKqVarMao+hUkFDYLmvBrYKh842AlZqGb6nLe90XA7v3lboIqlamnJat3gaJogAA="
+  },
+  "people/vinmun-2025": {
+    "format": "avif",
+    "width": 1600,
+    "height": 1066,
+    "widths": [
+      800,
+      1200,
+      1600
+    ],
+    "preview": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAACQBACdASoYABAAPt1apkyopSOiMAgBEBuJZQAMwADpEwCEC07A9stl6HpYPoAA/tcKeuWS2XS9k0mtjXr3p/It8NJdnQz+ByUJT43is7M3RdcpH8sb5A6Q9fyMnWveXwU01t+W0pTzkBtGSleP9ut82EzkzGk1z2nNP+U3erTP4M5349EZzM07SFkr0fOSeDP4zgAA"
+  },
+  "people/vtec-vinsteam-2025": {
+    "format": "avif",
+    "width": 1600,
+    "height": 1067,
+    "widths": [
+      800,
+      1200,
+      1600
+    ],
+    "preview": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAAAQBACdASoYABAAPt1apkyopSOiMAgBEBuJYgCdMoACMAp5sdM+xXGqQAD+ljcR6ruFEdfy0AYjknlgIQsc+4PvWV7bEbgLmxzAOlPUUiFe98hhvjvo5JPWu09oK1fcX0mePgQ/Sj7B5esxtX4E5XxKHtRrlVFmH3xR9Jz/32ifo60xu48oGH6ClJgtGAAA"
+  },
+  "walley/cover": {
+    "format": "webp",
+    "width": 1400,
+    "height": 788,
+    "widths": [
+      800,
+      1400
+    ],
+    "preview": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAABwAwCdASoYAA4APt1apkyopSOiMAgBEBuJZwC3uC0Lf+DZ9AAA/u83SB9weC+u187xs+Kzp3wmtqu6ScESXX2VbtWTCYAA"
+  },
+  "walley/harvest-log": {
+    "format": "webp",
+    "width": 600,
+    "height": 840,
+    "widths": [
+      400,
+      600
+    ],
+    "preview": "data:image/webp;base64,UklGRtQAAABXRUJQVlA4IMgAAABQBgCdASoYACIAPtVeo0yoJaMiNVgIAQAaiWYAnTLddLAx2U6klEh2z9mOT1AJnxAbH+jPJ4OGdexIAAD+rpTqhk7SC+5Gih41e4jO4khx8TOx91O1TDW31gpcensuYxzjHD0h7c1z9gOO19ZXsVp27PxTUTUDfmlWSrKy54C9ccUVNNwhDfUYDKhxqWTmJ/R5VL6LxvFkSPFXe878snjSkINAh9bKnC6M/S+0UW6AvGGVdn0qD8Z9KgvtQuQCD5eu1QOxBpAAAA=="
+  },
+  "walley/rhone-login": {
+    "format": "webp",
+    "width": 600,
+    "height": 840,
+    "widths": [
+      400,
+      600
+    ],
+    "preview": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAABwBQCdASoYACIAPt1cqEyopSQlsBqqqRAbiWUAuwAUpCc+lRoj9M+vmPaVNFQ+pvjpbetwAP7L+uHdyCk/JBO4MqwZmrQKPn2h6WKM1kl+LwOfWCeRImFqSBhENvxIM73RHY9Z+Tj3wnsqZUisDDkF2IB0Hd7Lcy3buio5OegG6ptG+GCCdn3gZmxV/mAA"
+  }
+}

@@ -314,59 +314,13 @@
   }
 
   // ---------------------------------------------------------- hero
+  // The intro itself is CSS (site.css, "Hero intro") so it plays before this
+  // script has downloaded. Here: pointer parallax and the scroll drift. They
+  // move different elements from the CSS animations, so the two never fight.
   const heroIntro = () => {
     const hero = $(".hero")
     if (!hero) return
-    const portrait = $(".portrait", hero)
-    const ring = $(".portrait-ring circle", hero)
-    const img = $(".portrait img", hero)
     const icons = $$(".hero-icon", hero)
-    const title = $("[data-hero-title]", hero)
-    const scribble = $(".scribble path", hero)
-    const sub = $("[data-hero-sub]", hero)
-    const cue = $(".scroll-cue", hero)
-
-    const tl = gsap.timeline({ defaults: { ease }, delay: 0.15 })
-    gsap.set([portrait, title, sub], { opacity: 1 })
-
-    const circumference = 2 * Math.PI * 48
-    gsap.set(ring, { strokeDasharray: circumference, strokeDashoffset: circumference })
-    tl.fromTo(img, { clipPath: "circle(0% at 50% 50%)", scale: 1.25 }, { clipPath: "circle(50% at 50% 50%)", scale: 1, duration: 1.4 }, 0)
-      .to(ring, { strokeDashoffset: 0, duration: 1.5, ease: "power3.inOut" }, 0)
-
-    let words = [title]
-    if (window.SplitText) {
-      words = SplitText.create(title, { type: "words", wordsClass: "word" }).words
-    }
-    tl.from(words, { y: 34, opacity: 0, rotateX: -50, filter: "blur(6px)", duration: 1.1, stagger: 0.05 }, 0.35)
-
-    if (scribble) {
-      const length = scribble.getTotalLength?.() ?? 320
-      gsap.set(scribble, { strokeDasharray: length, strokeDashoffset: length })
-      tl.to(scribble, { strokeDashoffset: 0, duration: 1.1, ease: "power2.inOut" }, 1.1)
-    }
-
-    const wave = $(".wave", sub)
-    let chars = [sub]
-    if (wave && window.SplitText) chars = SplitText.create(wave, { type: "chars", charsClass: "char" }).chars
-    tl.from(chars, { y: 16, opacity: 0, duration: 0.7, stagger: 0.012, ease: "back.out(2)" }, 0.95)
-    tl.from($(".heart", sub), { scale: 0, rotate: -30, duration: 0.8, ease: "back.out(3)" }, 1.4)
-    tl.to(cue, { opacity: 1, duration: 0.8 }, 1.8)
-
-    icons.forEach((icon, i) => {
-      tl.fromTo(
-        icon,
-        { opacity: 0, y: -160, scale: 0.6, rotation: i ? 40 : -40 },
-        { opacity: 1, y: 0, scale: 1, rotation: 0, duration: 1.4, ease: "elastic.out(1, 0.6)" },
-        0.55 + i * 0.12,
-      )
-    })
-    tl.add(() => {
-      icons.forEach((icon, i) =>
-        gsap.to(icon.firstElementChild, { yPercent: i ? -9 : 9, rotation: i ? 4 : -4, duration: 3 + i, ease: "sine.inOut", yoyo: true, repeat: -1 }),
-      )
-      gsap.to($(".heart", sub), { scale: 1.18, duration: 0.45, ease: "power2.inOut", yoyo: true, repeat: -1, repeatDelay: 1.6 })
-    })
 
     // Pointer parallax for the portrait and floating icons.
     if (finePointer) {
@@ -408,7 +362,8 @@
         { opacity: 1, y: 0, duration: 1, ease, stagger: 0.06, clearProps: "transform", scrollTrigger: onceOnEnter(group, "top 90%") },
       ),
     )
-    $$(".section-icon").forEach((icon) =>
+    // Icons at the top of a page already pop in with CSS (.intro-head).
+    $$(".section-icon").filter((icon) => !icon.closest(".intro-head")).forEach((icon) =>
       gsap.fromTo(
         icon,
         { opacity: 0, scale: 0.4, rotate: -25, y: 20 },

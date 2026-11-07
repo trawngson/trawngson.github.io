@@ -15,11 +15,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#f8f6f3">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap">
-<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="preload" href="/assets/fonts/libre-baskerville-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=a0f7653426">
 <script>
 // Hide animated elements only when motion is allowed, and show them again if
 // the motion script never starts (blocked CDN, old browser, script error).
@@ -31,12 +28,12 @@
   setTimeout(function () { if (!d.classList.contains("motion-ready")) d.classList.remove("motion") }, 3000)
 })()
 </script>
-<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/lenis@1.3.3/dist/lenis.min.js"></script>
-<script defer src="/assets/js/main.js"></script>
+<script defer src="/assets/vendor/gsap-3.13.0.min.js"></script>
+<script defer src="/assets/vendor/scrolltrigger-3.13.0.min.js"></script>
+<script defer src="/assets/vendor/splittext-3.13.0.min.js"></script>
+<script defer src="/assets/vendor/lenis-1.3.3.min.js"></script>
+<script defer src="/assets/vendor/flip-3.13.0.min.js"></script>
+<script defer src="/assets/js/main.js?v=54db53fe5f"></script>
 
 </head>
 <body data-page="works">
@@ -52,9 +49,9 @@
 <main id="main">
 
 <section class="page-head">
-  <h1 class="page-title" data-split>Works</h1>
-  <p class="section-lede" data-reveal>Apps, research pipelines, hardware and small tools, built at school, for school, and for fun.</p>
-  <div class="filters" role="toolbar" aria-label="Filter projects by type" data-filters>
+  <h1 class="page-title intro-title"><span class="w" style="--i: 0">Works</span></h1>
+  <p class="section-lede intro" style="--delay: 0.3s">Apps, research pipelines, hardware and small tools, built at school, for school, and for fun.</p>
+  <div class="filters intro" style="--delay: 0.4s" role="toolbar" aria-label="Filter projects by type" data-filters>
     <button type="button" class="filter" data-filter="All" aria-pressed="true">All <sup>9</sup></button>
     <button type="button" class="filter" data-filter="Apps" aria-pressed="false">Apps <sup>2</sup></button>
     <button type="button" class="filter" data-filter="AI &amp; Vision" aria-pressed="false">AI &amp; Vision <sup>3</sup></button>
@@ -68,7 +65,7 @@
     <article class="card" data-categories="Apps|AI &amp; Vision" data-reveal-card>
   <a class="card-link" href="/works/aware/" data-cursor="View">
     <div class="card-cover"><div class="cover cover--phones" role="img" aria-label="Three AWARE screens over Hokusai's The Great Wave off Kanagawa" style="view-transition-name: cover-aware">
-  <img class="cover-art" src="/assets/img/art/greatwave-wide.webp" alt="" width="1600" height="1000" fetchpriority="high" decoding="async" data-depth="0.15">
+  <img class="cover-art has-preview" src="/assets/img/art/greatwave-wide-1200.webp" srcset="/assets/img/art/greatwave-wide-800.webp 800w, /assets/img/art/greatwave-wide-1200.webp 1200w, /assets/img/art/greatwave-wide-1600.webp 1600w, /assets/img/art/greatwave-wide-2400.webp 2400w" sizes="(max-width: 748px) 100vw, (max-width: 1154px) 46vw, 360px" alt="" width="2400" height="1500" fetchpriority="high" decoding="async" style="background-image: url(data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAADwAwCdASoYAA8APt1apkyopSOiMAgBEBuJQBOgA3YyowmqmvkUw9W8AP7oOq8XBa7eq/q+yZZHgpfZdX2hsCA52pWF37IFIXgRDL2WstVTydcAWWGaihcxDHsH/kuwNtp2FVk22bXDrP5hN+yLbdZ/+2aKxc3LjPExeQYwAAA=)" data-depth="0.15">
   <div class="cover-phones">
     <div class="cover-phone cover-phone--1"><img src="/assets/img/aware/home.webp" alt="" width="502" height="966" fetchpriority="high" decoding="async" data-depth="0.5"></div>
     <div class="cover-phone cover-phone--2"><img src="/assets/img/aware/scan-results.webp" alt="" width="502" height="966" fetchpriority="high" decoding="async" data-depth="0.8"></div>
@@ -86,7 +83,7 @@
     <article class="card" data-categories="Hardware|AI &amp; Vision" data-reveal-card>
   <a class="card-link" href="/works/aware-bin/" data-cursor="View">
     <div class="card-cover"><div class="cover cover--object" role="img" aria-label="Exploded CAD render of the smart bin over Monet's Impression, Sunrise" style="view-transition-name: cover-aware-bin">
-  <img class="cover-art" src="/assets/img/art/sunrise-wide.webp" alt="" width="1600" height="1000" fetchpriority="high" decoding="async" data-depth="0.15">
+  <img class="cover-art has-preview" src="/assets/img/art/sunrise-wide-1200.webp" srcset="/assets/img/art/sunrise-wide-800.webp 800w, /assets/img/art/sunrise-wide-1200.webp 1200w, /assets/img/art/sunrise-wide-1600.webp 1600w" sizes="(max-width: 748px) 100vw, (max-width: 1154px) 46vw, 360px" alt="" width="1600" height="1000" fetchpriority="high" decoding="async" style="background-image: url(data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAACwAwCdASoYAA8APt1cpkyopSOiMAgBEBuJYwC7AAjUwe6Lp7HBQAD97I2X+95f6RYXAIWc3lH8bcT1c0s7rn+SviWJEBD/W2FmCAAA)" data-depth="0.15">
   <div class="cover-object" style="aspect-ratio: 417 / 900"><img src="/assets/img/bin/exploded.webp" alt="" width="417" height="900" fetchpriority="high" decoding="async" data-depth="0.7"></div>
 </div></div>
     <div class="card-body">
@@ -100,7 +97,7 @@
     <article class="card" data-categories="Apps" data-reveal-card>
   <a class="card-link" href="/works/walley/" data-cursor="View">
     <div class="card-cover"><div class="cover cover--image" role="img" aria-label="Walley's sign-in screen over Starry Night Over the Rhône" style="view-transition-name: cover-walley">
-  <img class="cover-img" src="/assets/img/walley/cover.webp" alt="" width="1400" height="788" loading="lazy" decoding="async" data-depth="0.15">
+  <img class="cover-img has-preview" src="/assets/img/walley/cover-1400.webp" srcset="/assets/img/walley/cover-800.webp 800w, /assets/img/walley/cover-1400.webp 1400w" sizes="(max-width: 748px) 100vw, (max-width: 1154px) 46vw, 360px" alt="" width="1400" height="788" loading="lazy" decoding="async" style="background-image: url(data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAABwAwCdASoYAA4APt1apkyopSOiMAgBEBuJZwC3uC0Lf+DZ9AAA/u83SB9weC+u187xs+Kzp3wmtqu6ScESXX2VbtWTCYAA)" data-depth="0.15">
 </div></div>
     <div class="card-body">
       <p class="card-kicker"><span>2024–26</span><span>Cross-platform app</span></p>

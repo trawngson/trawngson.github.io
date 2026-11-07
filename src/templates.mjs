@@ -1,16 +1,59 @@
+import { createHash } from "node:crypto"
+import { readFileSync } from "node:fs"
+
 import * as icons from "./icons.mjs"
 import { site, peek, skills, community, filters, projects } from "./content.mjs"
+import images from "./images.json" with { type: "json" }
 
-const CDN = {
-  gsap: "https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js",
-  scrollTrigger: "https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js",
-  splitText: "https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js",
-  flip: "https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js",
-  lenis: "https://cdn.jsdelivr.net/npm/lenis@1.3.3/dist/lenis.min.js",
-  matter: "https://cdn.jsdelivr.net/npm/matter-js@0.20.0/build/matter.min.js",
+// Served from this site rather than a CDN: on slow networks every extra
+// server costs a DNS lookup and TLS handshake before anything downloads.
+const VENDOR = {
+  gsap: "/assets/vendor/gsap-3.13.0.min.js",
+  scrollTrigger: "/assets/vendor/scrolltrigger-3.13.0.min.js",
+  splitText: "/assets/vendor/splittext-3.13.0.min.js",
+  flip: "/assets/vendor/flip-3.13.0.min.js",
+  lenis: "/assets/vendor/lenis-1.3.3.min.js",
+  matter: "/assets/vendor/matter-0.20.0.min.js",
 }
 
+// The hero heading's font, fetched before the stylesheet asks for it. Body
+// text (DM Sans) swaps in a moment later, which is barely visible sans to sans.
+const PRELOAD_FONTS = ["/assets/fonts/libre-baskerville-italic-latin.woff2"]
+
 const IMG = "/assets/img/"
+
+// Content hashes appended to the stylesheet and script URLs, so a visitor's
+// cached copy is never paired with newer pages after a deploy.
+const ROOT = new URL("..", import.meta.url)
+const hash = (file) => createHash("sha256").update(readFileSync(new URL(file, ROOT))).digest("hex").slice(0, 10)
+const VERSION = { css: hash("assets/css/site.css"), js: hash("assets/js/main.js") }
+
+// How wide each kind of image is drawn, worked out from the CSS grid at each
+// breakpoint, so the browser can pick a file before layout. (sizes="auto" was
+// tried: Chrome guessed from the width attribute first, started the 2400 px
+// file, then switched, wasting bandwidth on slow networks.) Covers bleed 8%
+// past their frame for the parallax, so their widths include that.
+export const SIZES = {
+  featured: "(max-width: 720px) 100vw, (max-width: 1200px) 46vw, 560px",
+  grid: "(max-width: 748px) 100vw, (max-width: 1154px) 46vw, 360px",
+  hero: "(max-width: 1200px) 100vw, 1210px",
+  bench: "320px",
+  peek: "(max-width: 933px) 196px, (max-width: 1333px) 21vw, 280px",
+  beyond: "(max-width: 900px) 92vw, (max-width: 1360px) 40vw, 540px",
+}
+
+// A responsive <img> for an image made by scripts/images.py. While it loads,
+// a tiny blurred copy is shown as its background.
+function picture(key, { cls = "", alt = "", sizes, eager = false, attrs = "" }) {
+  const im = images[key]
+  if (!im) throw new Error(`No image "${key}" in src/images.json; run scripts/images.py`)
+  const url = (w) => `${IMG}${key}-${w}.${im.format}`
+  const srcset = im.widths.map((w) => `${url(w)} ${w}w`).join(", ")
+  const fallback = im.widths.find((w) => w >= 1000) ?? im.widths.at(-1)
+  const classes = [cls, im.preview && "has-preview"].filter(Boolean).join(" ")
+  const loading = eager ? 'fetchpriority="high"' : 'loading="lazy"'
+  return `<img${classes ? ` class="${classes}"` : ""} src="${url(fallback)}" srcset="${srcset}" sizes="${sizes}" alt="${attr(alt)}" width="${im.width}" height="${im.height}" ${loading} decoding="async"${im.preview ? ` style="background-image: url(${im.preview})"` : ""}${attrs}>`
+}
 
 export const esc = (value) =>
   String(value)
@@ -32,9 +75,10 @@ export function layout({ title, description = site.description, path = "/", body
   const url = site.url + path
   const fullTitle = title ? `${title} | ${site.name}` : `${site.name} | Portfolio`
   const ogImage = site.url + (image ?? "/assets/img/og-card.jpg")
-  const scriptTags = [CDN.gsap, CDN.scrollTrigger, CDN.splitText, CDN.flip, CDN.lenis, ...scripts]
+  const scriptTags = [VENDOR.gsap, VENDOR.scrollTrigger, VENDOR.splitText, VENDOR.lenis, ...scripts]
     .map((src) => `<script defer src="${src}"></script>`)
     .join("\n")
+  const preloads = PRELOAD_FONTS.map((f) => `<link rel="preload" href="${f}" as="font" type="font/woff2" crossorigin>`).join("\n")
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -52,11 +96,8 @@ export function layout({ title, description = site.description, path = "/", body
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#f8f6f3">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap">
-<link rel="stylesheet" href="/assets/css/site.css">
+${preloads}
+<link rel="stylesheet" href="/assets/css/site.css?v=${VERSION.css}">
 <script>
 // Hide animated elements only when motion is allowed, and show them again if
 // the motion script never starts (blocked CDN, old browser, script error).
@@ -69,7 +110,7 @@ export function layout({ title, description = site.description, path = "/", body
 })()
 </script>
 ${scriptTags}
-<script defer src="/assets/js/main.js"></script>
+<script defer src="/assets/js/main.js?v=${VERSION.js}"></script>
 ${jsonLd ? `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>` : ""}
 </head>
 <body data-page="${page}">
@@ -104,7 +145,17 @@ function footer() {
 </footer>`
 }
 
-function contactCta({ heading = "h2", withLove = false } = {}) {
+// Attributes for content at the top of a page. With intro, it animates in pure
+// CSS on first paint (see "Page-top intros" in site.css) instead of waiting
+// for the motion script, which on a slow network can take seconds to arrive.
+const reveal = (intro, delay, cls = "", motionAttr = "data-reveal") =>
+  intro
+    ? ` class="${[cls, "intro"].filter(Boolean).join(" ")}" style="--delay: ${delay}s"`
+    : `${cls ? ` class="${cls}"` : ""} ${motionAttr}`
+const titleAttrs = (intro, cls) => (intro ? ` class="${cls} intro-title"` : ` class="${cls}" data-split`)
+const titleText = (intro, text) => (intro ? heroWords(text, 0) : esc(text))
+
+function contactCta({ heading = "h2", withLove = false, intro = false } = {}) {
   const rows = site.socials
     .map(
       (s) => `<li>
@@ -116,15 +167,15 @@ function contactCta({ heading = "h2", withLove = false } = {}) {
     )
     .join("\n")
   return `<section class="contact" aria-labelledby="contact-title">
-  <div class="section-head">
+  <div class="section-head${intro ? " intro-head" : ""}">
     ${icons.fax}
-    <${heading} id="contact-title" class="section-title section-title--xl" data-split>Ready to build something amazing?</${heading}>
-    <p class="section-lede" data-reveal>I'd love to connect with you!</p>
+    <${heading} id="contact-title"${titleAttrs(intro, "section-title section-title--xl")}>${titleText(intro, "Ready to build something amazing?")}</${heading}>
+    <p${reveal(intro, 0.4, "section-lede")}>I'd love to connect with you!</p>
   </div>
-  <ul class="contact-list" data-stagger>
+  <ul${reveal(intro, 0.5, "contact-list", "data-stagger")}>
     ${rows}
   </ul>
-  ${withLove ? `<p class="contact-love" data-reveal>Love what you see? <a href="mailto:${site.email}">Send me an email</a></p>` : ""}
+  ${withLove ? `<p${reveal(intro, 0.6, "contact-love")}>Love what you see? <a href="mailto:${site.email}">Send me an email</a></p>` : ""}
 </section>`
 }
 
@@ -134,26 +185,27 @@ function contactCta({ heading = "h2", withLove = false } = {}) {
 
 const vtStyle = (project, vt) => (vt ? ` style="view-transition-name: cover-${project.slug}"` : "")
 
-export function cover(project, { vt = false, eager = false } = {}) {
+export function cover(project, { vt = false, eager = false, sizes = SIZES.bench } = {}) {
   const c = project.cover
   const loading = eager ? 'fetchpriority="high"' : 'loading="lazy"'
   const label = `role="img" aria-label="${attr(c.alt)}"`
+  const art = (cls, key) => picture(key, { cls, sizes, eager, attrs: ' data-depth="0.15"' })
   switch (c.type) {
     case "phones":
       return `<div class="cover cover--phones" ${label}${vtStyle(project, vt)}>
-  <img class="cover-art" src="${IMG}art/${c.art}-wide.webp" alt="" width="1600" height="1000" ${loading} decoding="async" data-depth="0.15">
+  ${art("cover-art", `art/${c.art}-wide`)}
   <div class="cover-phones">
     ${c.phones.map((p, i) => `<div class="cover-phone cover-phone--${i + 1}"><img src="${IMG}${p}" alt="" width="502" height="966" ${loading} decoding="async" data-depth="${[0.5, 0.8, 0.5][i]}"></div>`).join("\n    ")}
   </div>
 </div>`
     case "object":
       return `<div class="cover cover--object" ${label}${vtStyle(project, vt)}>
-  <img class="cover-art" src="${IMG}art/${c.art}-wide.webp" alt="" width="1600" height="1000" ${loading} decoding="async" data-depth="0.15">
+  ${art("cover-art", `art/${c.art}-wide`)}
   <div class="cover-object" style="aspect-ratio: ${c.width} / ${c.height}"><img src="${IMG}${c.object}" alt="" width="${c.width}" height="${c.height}" ${loading} decoding="async" data-depth="0.7"></div>
 </div>`
     case "image":
       return `<div class="cover cover--image" ${label}${vtStyle(project, vt)}>
-  <img class="cover-img" src="${IMG}${c.src}" alt="" width="${c.width}" height="${c.height}" ${loading} decoding="async" data-depth="0.15">
+  ${art("cover-img", c.src)}
 </div>`
     case "browser":
       return `<div class="cover cover--browser cover--${c.tone}" ${label}${vtStyle(project, vt)}>
@@ -292,10 +344,10 @@ function tags(list) {
   return `<ul class="tags">${list.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>`
 }
 
-function projectCard(project, { vt = true, eager = false, headingLevel = 3 } = {}) {
+function projectCard(project, { vt = true, eager = false, headingLevel = 3, sizes = SIZES.featured } = {}) {
   return `<article class="card" data-categories="${attr(project.categories.join("|"))}" data-reveal-card>
   <a class="card-link" href="${href(project)}" data-cursor="View">
-    <div class="card-cover">${cover(project, { vt, eager })}</div>
+    <div class="card-cover">${cover(project, { vt, eager, sizes })}</div>
     <div class="card-body">
       <p class="card-kicker"><span>${esc(project.year)}</span><span>${esc(project.kind)}</span></p>
       <h${headingLevel} class="card-title">${esc(project.title)} <span class="card-arrow">${arrow}</span></h${headingLevel}>
@@ -309,8 +361,8 @@ function projectCard(project, { vt = true, eager = false, headingLevel = 3 } = {
 function peekCard(card, hidden) {
   const tab = hidden ? ' tabindex="-1"' : ""
   const visual = card.baked
-    ? `<img class="peek-baked" src="${IMG}${card.baked}" alt="${hidden ? "" : attr(card.alt)}" loading="lazy" decoding="async">`
-    : `<img class="peek-art" src="${IMG}art/${card.art}-portrait.webp" alt="" width="600" height="840" loading="lazy" decoding="async">
+    ? picture(card.baked, { cls: "peek-baked", alt: hidden ? "" : card.alt, sizes: SIZES.peek })
+    : `${picture(`art/${card.art}-portrait`, { cls: "peek-art", sizes: SIZES.peek })}
         <img class="peek-fg${card.object ? " peek-fg--object" : ""}" src="${IMG}${card.fg}" alt="${hidden ? "" : attr(card.alt)}" loading="lazy" decoding="async">`
   return `<li class="peek-card">
       <a class="peek-link" href="/works/${card.project}/"${tab} data-cursor="Open">
@@ -323,6 +375,19 @@ function peekCard(card, hidden) {
 // ---------------------------------------------------------------------------
 // Pages
 // ---------------------------------------------------------------------------
+
+// The hero intro animates word by word and letter by letter in CSS, so the
+// pieces are wrapped here. --i sets each piece's place in the stagger.
+const heroWords = (text, start) =>
+  text.split(" ").map((word, k) => `<span class="w" style="--i: ${start + k}">${esc(word)}</span>`).join(" ")
+
+const heroLetters = (text) => {
+  let i = 0
+  return text
+    .split(" ")
+    .map((word) => `<span class="cw">${[...word].map((ch) => `<span class="c" style="--i: ${i++}">${esc(ch)}</span>`).join("")}</span>`)
+    .join(" ")
+}
 
 export function homePage() {
   const featured = projects.filter((p) => p.featured)
@@ -342,8 +407,8 @@ export function homePage() {
     <svg class="portrait-ring" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="48"/></svg>
     <img src="${IMG}people/portrait.avif" alt="Truong Son working at a robotics table" width="512" height="512" fetchpriority="high">
   </div>
-  <h1 id="hero-title" class="hero-title" data-hero-title>Hey, I'm <span class="nowrap"><span class="accent">Truong Son<svg class="scribble" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 60 4, 120 4, 170 10 S 260 17, 297 6"/></svg></span>.</span> Here, you can check out what I'm working on.</h1>
-  <p class="hero-sub" data-hero-sub><span class="wave">I try my best to make my projects with</span> <span class="heart" aria-label="love">❤️</span></p>
+  <h1 id="hero-title" class="hero-title">${heroWords("Hey, I'm", 0)} <span class="nowrap"><span class="accent">${heroWords("Truong Son", 2)}<svg class="scribble" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 60 4, 120 4, 170 10 S 260 17, 297 6"/></svg></span>${heroWords(".", 3)}</span> ${heroWords("Here, you can check out what I'm working on.", 4)}</h1>
+  <p class="hero-sub"><span class="sr-only">I try my best to make my projects with love</span><span aria-hidden="true">${heroLetters("I try my best to make my projects with")} <span class="heart">❤️</span></span></p>
   <a class="scroll-cue" href="#sneak-peek" aria-label="Scroll to my work"><span></span></a>
 </section>
 
@@ -422,7 +487,7 @@ export function homePage() {
         .map(
           (item, i) => `<article class="beyond-item${i % 2 ? " beyond-item--flip" : ""}">
         <figure class="beyond-photo" style="--tilt: ${i % 2 ? -3 : 3}">
-          <img src="${IMG}${item.photo}" alt="${attr(item.alt)}" width="${item.width}" height="${item.height}" loading="lazy" decoding="async">
+          ${picture(item.photo, { alt: item.alt, sizes: SIZES.beyond })}
           <figcaption>${esc(item.caption)}</figcaption>
         </figure>
         <div class="beyond-text" data-reveal>
@@ -442,7 +507,7 @@ ${contactCta()}
     path: "/",
     page: "home",
     body,
-    scripts: [CDN.matter],
+    scripts: [VENDOR.matter],
     jsonLd: {
       "@context": "https://schema.org",
       "@type": "Person",
@@ -462,15 +527,15 @@ export function worksPage() {
   const count = (f) => (f === "All" ? projects.length : projects.filter((p) => p.categories.includes(f)).length)
   const body = `
 <section class="page-head">
-  <h1 class="page-title" data-split>Works</h1>
-  <p class="section-lede" data-reveal>Apps, research pipelines, hardware and small tools, built at school, for school, and for fun.</p>
-  <div class="filters" role="toolbar" aria-label="Filter projects by type" data-filters>
+  <h1${titleAttrs(true, "page-title")}>${titleText(true, "Works")}</h1>
+  <p${reveal(true, 0.3, "section-lede")}>Apps, research pipelines, hardware and small tools, built at school, for school, and for fun.</p>
+  <div${reveal(true, 0.4, "filters")} role="toolbar" aria-label="Filter projects by type" data-filters>
     ${filters.map((f, i) => `<button type="button" class="filter" data-filter="${attr(f)}" aria-pressed="${i === 0}">${esc(f)} <sup>${count(f)}</sup></button>`).join("\n    ")}
   </div>
 </section>
 <section class="works" aria-label="All projects">
   <div class="card-grid card-grid--all" data-grid>
-    ${projects.map((p, i) => projectCard(p, { eager: i < 2, headingLevel: 2 })).join("\n    ")}
+    ${projects.map((p, i) => projectCard(p, { eager: i < 2, headingLevel: 2, sizes: SIZES.grid })).join("\n    ")}
   </div>
   <p class="works-empty" hidden>Nothing here yet.</p>
 </section>
@@ -482,6 +547,7 @@ ${contactCta()}
     path: "/works/",
     page: "works",
     body,
+    scripts: [VENDOR.flip],
   })
 }
 
@@ -558,12 +624,12 @@ export function projectPage(project, next) {
 <article class="project" data-project="${project.slug}">
   <header class="project-hero">
     <a class="back-link" href="/works/"><span aria-hidden="true">←</span> All works</a>
-    <p class="eyebrow" data-reveal><span>${esc(project.year)}</span><span>${esc(project.kind)}</span></p>
-    <h1 class="project-title" data-split>${esc(project.title)}</h1>
-    <p class="project-tagline" data-reveal>${esc(project.tagline)}</p>
-    <div data-reveal>${tags(project.tags)}</div>
+    <p${reveal(true, 0.05, "eyebrow")}><span>${esc(project.year)}</span><span>${esc(project.kind)}</span></p>
+    <h1${titleAttrs(true, "project-title")}>${titleText(true, project.title)}</h1>
+    <p${reveal(true, 0.35, "project-tagline")}>${esc(project.tagline)}</p>
+    <div${reveal(true, 0.45)}>${tags(project.tags)}</div>
   </header>
-  <figure class="project-cover">${cover(project, { vt: true, eager: true })}</figure>
+  <figure class="project-cover">${cover(project, { vt: true, eager: true, sizes: SIZES.hero })}</figure>
   <div class="project-body">
     <aside class="project-meta" aria-label="Project details" data-reveal>
       <dl>
@@ -616,7 +682,7 @@ export function contactPage() {
     description: "Get in touch with Nguyen Truong Son by email, GitHub or Facebook.",
     path: "/contact/",
     page: "contact",
-    body: `<div class="contact-page">${contactCta({ heading: "h1", withLove: true })}</div>`,
+    body: `<div class="contact-page">${contactCta({ heading: "h1", withLove: true, intro: true })}</div>`,
   })
 }
 
@@ -626,11 +692,11 @@ export function notFoundPage() {
     description: "This page doesn't exist.",
     path: "/404.html",
     page: "notfound",
-    body: `<section class="notfound">
+    body: `<section class="notfound intro-head">
   ${icons.telescope}
-  <h1 class="section-title section-title--xl" data-split>Nothing out here.</h1>
-  <p class="section-lede" data-reveal>The telescope found no page at this address. It may have moved when the site was rebuilt.</p>
-  <div class="cta-row" data-reveal>
+  <h1${titleAttrs(true, "section-title section-title--xl")}>${titleText(true, "Nothing out here.")}</h1>
+  <p${reveal(true, 0.4, "section-lede")}>The telescope found no page at this address. It may have moved when the site was rebuilt.</p>
+  <div${reveal(true, 0.5, "cta-row")}>
     <a class="btn btn--orange" href="/" data-magnetic>Go home ${arrow}</a>
     <a class="btn btn--ghost" href="/works/" data-magnetic>See all works</a>
   </div>

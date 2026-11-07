@@ -70,17 +70,34 @@ for (const page of pages) {
     if (!(await exists(file))) fail(`${page}: broken local reference ${value}`)
   }
 
-  for (const match of html.matchAll(/<script defer src="(https:\/\/cdn\.jsdelivr\.net\/[^"]+)"/g)) {
-    if (!/@\d+\.\d+\.\d+\//.test(match[1])) fail(`${page}: CDN script without an exact version: ${match[1]}`)
+  for (const match of html.matchAll(/\bsrcset="([^"]+)"/g)) {
+    for (const candidate of match[1].split(",")) {
+      const url = candidate.trim().split(/\s+/)[0]
+      if (!(await exists(resolve(page, url)))) fail(`${page}: broken srcset entry ${url}`)
+    }
+  }
+
+  // Scripts, styles and fonts come from this site: each extra server costs a
+  // DNS lookup and TLS handshake, which is slow on weak networks.
+  for (const match of html.matchAll(/<(?:script|link)\b[^>]*\b(?:src|href)="(https?:\/\/[^"]+)"[^>]*>/g)) {
+    if (/rel="(?:canonical|preconnect)"/.test(match[0])) continue
+    fail(`${page}: loads ${match[1]} from another server`)
+  }
+}
+
+// Responsive images listed in src/images.json (made by scripts/images.py).
+const images = JSON.parse(await readFile(join(root, "src/images.json"), "utf8"))
+for (const [key, im] of Object.entries(images)) {
+  for (const w of im.widths) {
+    if (!(await exists(`assets/img/${key}-${w}.${im.format}`))) fail(`images.json: missing assets/img/${key}-${w}.${im.format}`)
   }
 }
 
 // Data-file references.
 for (const card of peek) {
-  for (const file of [card.fg, card.baked].filter(Boolean)) {
-    if (!(await exists(`assets/img/${file}`))) fail(`peek: missing assets/img/${file}`)
-  }
-  if (card.art && !card.baked && !(await exists(`assets/img/art/${card.art}-portrait.webp`))) fail(`peek: missing painting ${card.art}`)
+  if (card.fg && !(await exists(`assets/img/${card.fg}`))) fail(`peek: missing assets/img/${card.fg}`)
+  const key = card.baked ?? `art/${card.art}-portrait`
+  if (!images[key]) fail(`peek: no image "${key}" in src/images.json`)
 }
 
 // Redirect for the old Walley URL.

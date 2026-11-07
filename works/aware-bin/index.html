@@ -15,11 +15,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#f8f6f3">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap">
-<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="preload" href="/assets/fonts/libre-baskerville-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=a0f7653426">
 <script>
 // Hide animated elements only when motion is allowed, and show them again if
 // the motion script never starts (blocked CDN, old browser, script error).
@@ -31,12 +28,11 @@
   setTimeout(function () { if (!d.classList.contains("motion-ready")) d.classList.remove("motion") }, 3000)
 })()
 </script>
-<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/lenis@1.3.3/dist/lenis.min.js"></script>
-<script defer src="/assets/js/main.js"></script>
+<script defer src="/assets/vendor/gsap-3.13.0.min.js"></script>
+<script defer src="/assets/vendor/scrolltrigger-3.13.0.min.js"></script>
+<script defer src="/assets/vendor/splittext-3.13.0.min.js"></script>
+<script defer src="/assets/vendor/lenis-1.3.3.min.js"></script>
+<script defer src="/assets/js/main.js?v=54db53fe5f"></script>
 
 </head>
 <body data-page="project">
@@ -54,13 +50,13 @@
 <article class="project" data-project="aware-bin">
   <header class="project-hero">
     <a class="back-link" href="/works/"><span aria-hidden="true">←</span> All works</a>
-    <p class="eyebrow" data-reveal><span>2026</span><span>Hardware + computer vision</span></p>
-    <h1 class="project-title" data-split>AWARE Smart Bin</h1>
-    <p class="project-tagline" data-reveal>A sorting bin you simply throw things into. A camera identifies each item on a tipping plate, and the plate tilts it into the right liner.</p>
-    <div data-reveal><ul class="tags"><li>Hardware</li><li>CAD</li><li>Computer Vision</li></ul></div>
+    <p class="eyebrow intro" style="--delay: 0.05s"><span>2026</span><span>Hardware + computer vision</span></p>
+    <h1 class="project-title intro-title"><span class="w" style="--i: 0">AWARE</span> <span class="w" style="--i: 1">Smart</span> <span class="w" style="--i: 2">Bin</span></h1>
+    <p class="project-tagline intro" style="--delay: 0.35s">A sorting bin you simply throw things into. A camera identifies each item on a tipping plate, and the plate tilts it into the right liner.</p>
+    <div class="intro" style="--delay: 0.45s"><ul class="tags"><li>Hardware</li><li>CAD</li><li>Computer Vision</li></ul></div>
   </header>
   <figure class="project-cover"><div class="cover cover--object" role="img" aria-label="Exploded CAD render of the smart bin over Monet's Impression, Sunrise" style="view-transition-name: cover-aware-bin">
-  <img class="cover-art" src="/assets/img/art/sunrise-wide.webp" alt="" width="1600" height="1000" fetchpriority="high" decoding="async" data-depth="0.15">
+  <img class="cover-art has-preview" src="/assets/img/art/sunrise-wide-1200.webp" srcset="/assets/img/art/sunrise-wide-800.webp 800w, /assets/img/art/sunrise-wide-1200.webp 1200w, /assets/img/art/sunrise-wide-1600.webp 1600w" sizes="(max-width: 1200px) 100vw, 1210px" alt="" width="1600" height="1000" fetchpriority="high" decoding="async" style="background-image: url(data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAACwAwCdASoYAA8APt1cpkyopSOiMAgBEBuJYwC7AAjUwe6Lp7HBQAD97I2X+95f6RYXAIWc3lH8bcT1c0s7rn+SviWJEBD/W2FmCAAA)" data-depth="0.15">
   <div class="cover-object" style="aspect-ratio: 417 / 900"><img src="/assets/img/bin/exploded.webp" alt="" width="417" height="900" fetchpriority="high" decoding="async" data-depth="0.7"></div>
 </div></figure>
   <div class="project-body">

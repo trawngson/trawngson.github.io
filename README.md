@@ -25,8 +25,25 @@ Commit the generated HTML along with your changes; GitHub Pages serves the files
 | `src/icons.mjs` | The isometric section icons |
 | `assets/css/site.css` | Design tokens, layout and the animated project covers |
 | `assets/js/main.js` | Motion: GSAP, ScrollTrigger, SplitText, Flip, Lenis and Matter.js |
+| `assets/vendor/`, `assets/fonts/` | Those libraries and the two font families, served from this site |
 | `assets/img/` | Images (WebP and AVIF) |
+| `scripts/images.py`, `src/images.json` | Makes the sized versions of large images, and lists them |
 | `works/aware-bin/viewer.html` | The smart bin's offline 3D viewer |
+
+### Large images
+
+Paintings, project covers and photos come in several widths so each screen
+downloads only what it shows, with a tiny blurred preview while it loads.
+Make them with `scripts/images.py` (needs Pillow, and `cwebp` for WebP):
+
+```bash
+python3 scripts/images.py ~/photo.jpg people/new-photo --widths 800,1200,1600
+python3 scripts/images.py ~/painting.png art/name-wide --widths 800,1200,1600,2400 --format webp --quality 72
+```
+
+Use AVIF (the default) for photos. Keep paintings in WebP: their texture
+needs as many bytes in AVIF to stay as crisp. Then pass the key (for example
+`people/new-photo`) in `src/content.mjs`.
 
 ### Adding a project
 
@@ -37,9 +54,12 @@ works page, filters and project page appear automatically.
 
 ## Motion and accessibility
 
-Animation libraries load from jsDelivr at pinned versions. If they fail to load,
-or the visitor prefers reduced motion, every page still shows all of its content.
-Page-to-page morphs use the browser's View Transitions API where supported.
+Everything loads from this site, so a slow network only has one server to
+connect to. The top of every page animates in plain CSS, so it appears as soon
+as the page paints; the animation libraries handle scroll effects further down.
+If they fail to load, or the visitor prefers reduced motion, every page still
+shows all of its content. Page-to-page morphs use the browser's View
+Transitions API where supported.
 
 ## Credits
 

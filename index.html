@@ -15,11 +15,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#f8f6f3">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap">
-<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="preload" href="/assets/fonts/libre-baskerville-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=a0f7653426">
 <script>
 // Hide animated elements only when motion is allowed, and show them again if
 // the motion script never starts (blocked CDN, old browser, script error).
@@ -31,13 +28,12 @@
   setTimeout(function () { if (!d.classList.contains("motion-ready")) d.classList.remove("motion") }, 3000)
 })()
 </script>
-<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/lenis@1.3.3/dist/lenis.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/matter-js@0.20.0/build/matter.min.js"></script>
-<script defer src="/assets/js/main.js"></script>
+<script defer src="/assets/vendor/gsap-3.13.0.min.js"></script>
+<script defer src="/assets/vendor/scrolltrigger-3.13.0.min.js"></script>
+<script defer src="/assets/vendor/splittext-3.13.0.min.js"></script>
+<script defer src="/assets/vendor/lenis-1.3.3.min.js"></script>
+<script defer src="/assets/vendor/matter-0.20.0.min.js"></script>
+<script defer src="/assets/js/main.js?v=54db53fe5f"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Nguyen Truong Son","url":"https://truongson.me","email":"mailto:contact@truongson.me","jobTitle":"High school student and developer","affiliation":{"@type":"EducationalOrganization","name":"Vinschool The Harmony"},"address":{"@type":"PostalAddress","addressLocality":"Hanoi","addressCountry":"VN"},"sameAs":["https://github.com/trawngson","https://facebook.com/sonntt.az"],"knowsAbout":["Computer vision","iOS development","Machine learning","Python","Java"]}</script>
 </head>
 <body data-page="home">
@@ -61,8 +57,8 @@
     <svg class="portrait-ring" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="48"/></svg>
     <img src="/assets/img/people/portrait.avif" alt="Truong Son working at a robotics table" width="512" height="512" fetchpriority="high">
   </div>
-  <h1 id="hero-title" class="hero-title" data-hero-title>Hey, I'm <span class="nowrap"><span class="accent">Truong Son<svg class="scribble" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 60 4, 120 4, 170 10 S 260 17, 297 6"/></svg></span>.</span> Here, you can check out what I'm working on.</h1>
-  <p class="hero-sub" data-hero-sub><span class="wave">I try my best to make my projects with</span> <span class="heart" aria-label="love">❤️</span></p>
+  <h1 id="hero-title" class="hero-title"><span class="w" style="--i: 0">Hey,</span> <span class="w" style="--i: 1">I'm</span> <span class="nowrap"><span class="accent"><span class="w" style="--i: 2">Truong</span> <span class="w" style="--i: 3">Son</span><svg class="scribble" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 60 4, 120 4, 170 10 S 260 17, 297 6"/></svg></span><span class="w" style="--i: 3">.</span></span> <span class="w" style="--i: 4">Here,</span> <span class="w" style="--i: 5">you</span> <span class="w" style="--i: 6">can</span> <span class="w" style="--i: 7">check</span> <span class="w" style="--i: 8">out</span> <span class="w" style="--i: 9">what</span> <span class="w" style="--i: 10">I'm</span> <span class="w" style="--i: 11">working</span> <span class="w" style="--i: 12">on.</span></h1>
+  <p class="hero-sub"><span class="sr-only">I try my best to make my projects with love</span><span aria-hidden="true"><span class="cw"><span class="c" style="--i: 0">I</span></span> <span class="cw"><span class="c" style="--i: 1">t</span><span class="c" style="--i: 2">r</span><span class="c" style="--i: 3">y</span></span> <span class="cw"><span class="c" style="--i: 4">m</span><span class="c" style="--i: 5">y</span></span> <span class="cw"><span class="c" style="--i: 6">b</span><span class="c" style="--i: 7">e</span><span class="c" style="--i: 8">s</span><span class="c" style="--i: 9">t</span></span> <span class="cw"><span class="c" style="--i: 10">t</span><span class="c" style="--i: 11">o</span></span> <span class="cw"><span class="c" style="--i: 12">m</span><span class="c" style="--i: 13">a</span><span class="c" style="--i: 14">k</span><span class="c" style="--i: 15">e</span></span> <span class="cw"><span class="c" style="--i: 16">m</span><span class="c" style="--i: 17">y</span></span> <span class="cw"><span class="c" style="--i: 18">p</span><span class="c" style="--i: 19">r</span><span class="c" style="--i: 20">o</span><span class="c" style="--i: 21">j</span><span class="c" style="--i: 22">e</span><span class="c" style="--i: 23">c</span><span class="c" style="--i: 24">t</span><span class="c" style="--i: 25">s</span></span> <span class="cw"><span class="c" style="--i: 26">w</span><span class="c" style="--i: 27">i</span><span class="c" style="--i: 28">t</span><span class="c" style="--i: 29">h</span></span> <span class="heart">❤️</span></span></p>
   <a class="scroll-cue" href="#sneak-peek" aria-label="Scroll to my work"><span></span></a>
 </section>
 
@@ -76,68 +72,68 @@
       <ul class="marquee-list">
     <li class="peek-card">
       <a class="peek-link" href="/works/aware/" data-cursor="Open">
-        <img class="peek-art" src="/assets/img/art/almond-portrait.webp" alt="" width="600" height="840" loading="lazy" decoding="async">
+        <img class="peek-art has-preview" src="/assets/img/art/almond-portrait-600.webp" srcset="/assets/img/art/almond-portrait-400.webp 400w, /assets/img/art/almond-portrait-600.webp 600w" sizes="(max-width: 933px) 196px, (max-width: 1333px) 21vw, 280px" alt="" width="600" height="840" loading="lazy" decoding="async" style="background-image: url(data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAAAQBgCdASoYACIAPt1ip0yopiOiKrgN+RAbiUyyKdxlLxJD/AN0KVJygrZFUUro984NtzcGdhZm7QAA/uBCCcgFNgDKr4+jJG+8tYtsrC2auCXyY+kiCqF8y57dE4JQ1bkwbmNw0v5Qku6quIeAyxTgAn30b7kRhpTqFigG0rPBIn8piWchplp2BA9aJnjQTXrwgAAA)">
         <img class="peek-fg" src="/assets/img/aware/onboarding.webp" alt="AWARE onboarding screen" loading="lazy" decoding="async">
         <span class="placard"><span class="placard-project">AWARE</span><span class="placard-screen">Onboarding</span></span>
       </a>
     </li>
     <li class="peek-card">
       <a class="peek-link" href="/works/aware/" data-cursor="Open">
-        <img class="peek-art" src="/assets/img/art/gleaners-portrait.webp" alt="" width="600" height="840" loading="lazy" decoding="async">
+        <img class="peek-art has-preview" src="/assets/img/art/gleaners-portrait-600.webp" srcset="/assets/img/art/gleaners-portrait-400.webp 400w, /assets/img/art/gleaners-portrait-600.webp 600w" sizes="(max-width: 933px) 196px, (max-width: 1333px) 21vw, 280px" alt="" width="600" height="840" loading="lazy" decoding="async" style="background-image: url(data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAAAQBgCdASoYACIAPtleqUyoJaQlsBqqqQAbCWUAyMu+Qi9elqOK1xrJROwM3maihYw/3uibYYTjc2AA/t6ARHD2OfCkWeBVaqSeCyec02B0Qt9ZTYU2CxC5uL+5RbZlJUtlPnlWQvmXB/RePsWvI7GIdc9kGHJsLKSxu/t73jFinmkFVXwwrp+9yZxDQ5H6L5dMa5KWJq8S4AAA)">
         <img class="peek-fg" src="/assets/img/aware/scan-live.webp" alt="AWARE outlining a plastic bottle live through the camera" loading="lazy" decoding="async">
         <span class="placard"><span class="placard-project">AWARE</span><span class="placard-screen">Live detection</span></span>
       </a>
     </li>
     <li class="peek-card">
       <a class="peek-link" href="/works/aware/" data-cursor="Open">
-        <img class="peek-art" src="/assets/img/art/sower-portrait.webp" alt="" width="600" height="840" loading="lazy" decoding="async">
+        <img class="peek-art has-preview" src="/assets/img/art/sower-portrait-600.webp" srcset="/assets/img/art/sower-portrait-400.webp 400w, /assets/img/art/sower-portrait-600.webp 600w" sizes="(max-width: 933px) 196px, (max-width: 1333px) 21vw, 280px" alt="" width="600" height="840" loading="lazy" decoding="async" style="background-image: url(data:image/webp;base64,UklGRsoAAABXRUJQVlA4IL4AAADwBgCdASoYACIAPtlao0yoJSMiNVgIAQAbCWgAzBwWlKzQZdXA7d2YONRFptxvqglQ2VdR8CpU9o2Fj4vAXNkAAMrxT/Rp8QRpdML76sAOYZCdEdc/7G9fgp/QoU49LjMq0xs0pkw4/NtO40Gd3RNNk6pyJoA/tBV9UvXHQyZngYwbYIKzcMhNF7V3ufUtFNJFUG1DhT+yyJ/rXIrE80hx0e+HygavST+TpDS1gcks4934ChPjMgFO/wNjOfoA)">
         <img class="peek-fg" src="/assets/img/aware/scan-results.webp" alt="AWARE scan result for a plastic bottle with the CO2e it saves" loading="lazy" decoding="async">
         <span class="placard"><span class="placard-project">AWARE</span><span class="placard-screen">Scan result</span></span>
       </a>
     </li>
     <li class="peek-card">
       <a class="peek-link" href="/works/aware-bin/" data-cursor="Open">
-        <img class="peek-art" src="/assets/img/art/sunrise-portrait.webp" alt="" width="600" height="840" loading="lazy" decoding="async">
+        <img class="peek-art has-preview" src="/assets/img/art/sunrise-portrait-600.webp" srcset="/assets/img/art/sunrise-portrait-400.webp 400w, /assets/img/art/sunrise-portrait-600.webp 600w" sizes="(max-width: 933px) 196px, (max-width: 1333px) 21vw, 280px" alt="" width="600" height="840" loading="lazy" decoding="async" style="background-image: url(data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAACQBACdASoYACIAPt1ip0yxJiOiMBqqqiAbiWMAvzg5TyTcK2Ac4o4RLJuKOzAA/c5pNI3Kxv2ByHUT8bJg3lb0CKY1I5v5D9Oy5IlprUcOvNSsyCgSWF0M07xDJEhaGSER+mugAAA=)">
         <img class="peek-fg peek-fg--object" src="/assets/img/bin/exploded.webp" alt="Exploded CAD render of the AWARE smart sorting bin" loading="lazy" decoding="async">
         <span class="placard"><span class="placard-project">AWARE Smart Bin</span><span class="placard-screen">Exploded CAD</span></span>
       </a>
     </li>
     <li class="peek-card">
       <a class="peek-link" href="/works/aware/" data-cursor="Open">
-        <img class="peek-art" src="/assets/img/art/waterlilies-portrait.webp" alt="" width="600" height="840" loading="lazy" decoding="async">
+        <img class="peek-art has-preview" src="/assets/img/art/waterlilies-portrait-600.webp" srcset="/assets/img/art/waterlilies-portrait-400.webp 400w, /assets/img/art/waterlilies-portrait-600.webp 600w" sizes="(max-width: 933px) 196px, (max-width: 1333px) 21vw, 280px" alt="" width="600" height="840" loading="lazy" decoding="async" style="background-image: url(data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAABwBACdASoYACIAPt1YpU2opKMiMBVdURAbiWMAvnumhTUGicDoK7bs4nl2AAD+snsGbX3TekZBCb5UPLxZReaRlRYHslqMNLqf+nKEqwl9/WgRgA8+jXY7OKVrq5S0QGw0jIA8bIhRtxKymxbsgH58gxLc+qFrVlc0QzwHWd+oAAAA)">
         <img class="peek-fg" src="/assets/img/aware/home.webp" alt="AWARE home dashboard with waste and CO2 saved" loading="lazy" decoding="async">
         <span class="placard"><span class="placard-project">AWARE</span><span class="placard-screen">Home</span></span>
       </a>
     </li>
     <li class="peek-card">
       <a class="peek-link" href="/works/walley/" data-cursor="Open">
-        <img class="peek-baked" src="/assets/img/walley/rhone-login.webp" alt="Walley sign-in screen over Starry Night Over the Rhône" loading="lazy" decoding="async">
+        <img class="peek-baked has-preview" src="/assets/img/walley/rhone-login-600.webp" srcset="/assets/img/walley/rhone-login-400.webp 400w, /assets/img/walley/rhone-login-600.webp 600w" sizes="(max-width: 933px) 196px, (max-width: 1333px) 21vw, 280px" alt="Walley sign-in screen over Starry Night Over the Rhône" width="600" height="840" loading="lazy" decoding="async" style="background-image: url(data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAABwBQCdASoYACIAPt1cqEyopSQlsBqqqRAbiWUAuwAUpCc+lRoj9M+vmPaVNFQ+pvjpbetwAP7L+uHdyCk/JBO4MqwZmrQKPn2h6WKM1kl+LwOfWCeRImFqSBhENvxIM73RHY9Z+Tj3wnsqZUisDDkF2IB0Hd7Lcy3buio5OegG6ptG+GCCdn3gZmxV/mAA)">
         <span class="placard"><span class="placard-project">Walley</span><span class="placard-screen">Sign in</span></span>
       </a>
     </li>
     <li class="peek-card">
       <a class="peek-link" href="/works/aware/" data-cursor="Open">
-        <img class="peek-art" src="/assets/img/art/greatwave-portrait.webp" alt="" width="600" height="840" loading="lazy" decoding="async">
+        <img class="peek-art has-preview" src="/assets/img/art/greatwave-portrait-600.webp" srcset="/assets/img/art/greatwave-portrait-400.webp 400w, /assets/img/art/greatwave-portrait-600.webp 600w" sizes="(max-width: 933px) 196px, (max-width: 1333px) 21vw, 280px" alt="" width="600" height="840" loading="lazy" decoding="async" style="background-image: url(data:image/webp;base64,UklGRgIBAABXRUJQVlA4IPYAAABwBwCdASoYACIAPt1mrVEopSQipWmZEBuJQBdmYADPCF4gAXZyjAzJSQUEIrJjFV1tfHrIYjhePWjgwjU5MwbPntaNgAD+8dS3ApE1f60FN0XqBa+4VzGu20As3ksNxlHr4wwCv4DKmXm4e+fzHCwYqIlfbAB0Z5mDWf/iQMuDHQbAqqu9nLzFFBMQWFpI7fs0cOm+OSL9q4X82PZZ+hksCeBtK0FQNAVqlKDrDV106QYLhwOeOl/wSk7MuAAs6eJ0DyWiw2ukLI3IvmvPPESTIrP3r3BrmysXfkMx1yA+EHkRVZaZrmE+sNj9MXJbnWTxPqx8AAA=)">
         <img class="peek-fg" src="/assets/img/aware/waste-saved.webp" alt="AWARE waste-saved insights chart" loading="lazy" decoding="async">
         <span class="placard"><span class="placard-project">AWARE</span><span class="placard-screen">Waste saved</span></span>
       </a>
     </li>
     <li class="peek-card">
       <a class="peek-link" href="/works/aware/" data-cursor="Open">
-        <img class="peek-art" src="/assets/img/art/grandejatte-portrait.webp" alt="" width="600" height="840" loading="lazy" decoding="async">
+        <img class="peek-art has-preview" src="/assets/img/art/grandejatte-portrait-600.webp" srcset="/assets/img/art/grandejatte-portrait-400.webp 400w, /assets/img/art/grandejatte-portrait-600.webp 600w" sizes="(max-width: 933px) 196px, (max-width: 1333px) 21vw, 280px" alt="" width="600" height="840" loading="lazy" decoding="async" style="background-image: url(data:image/webp;base64,UklGRsIAAABXRUJQVlA4ILYAAACQBgCdASoYACIAPtFYnkyoJSKiNVgMAQAaCWIAtOgX335r3dQ1BPB0QxVg//e7KRQNkBSaCPBeLHN4cIAAAP6h5lgWW80k06HJXjc0mbKCNfBLMqf32uGyeE5NvCros6zb/JaIxkn04vru3d68WAUnTRJIKndx7A3kYsvrKjE2+UNLr8ycKHFG6lCf9Fr2s36m9C414MaOiNqqW3kiAJo0i04/QTShuzatsjGwf9In9eB2X4AAAA==)">
         <img class="peek-fg" src="/assets/img/aware/gallery.webp" alt="AWARE community gallery of upcycling ideas" loading="lazy" decoding="async">
         <span class="placard"><span class="placard-project">AWARE</span><span class="placard-screen">Gallery</span></span>
       </a>
     </li>
     <li class="peek-card">
       <a class="peek-link" href="/works/walley/" data-cursor="Open">
-        <img class="peek-baked" src="/assets/img/walley/harvest-log.webp" alt="Walley expense log over a Van Gogh wheat field" loading="lazy" decoding="async">
+        <img class="peek-baked has-preview" src="/assets/img/walley/harvest-log-600.webp" srcset="/assets/img/walley/harvest-log-400.webp 400w, /assets/img/walley/harvest-log-600.webp 600w" sizes="(max-width: 933px) 196px, (max-width: 1333px) 21vw, 280px" alt="Walley expense log over a Van Gogh wheat field" width="600" height="840" loading="lazy" decoding="async" style="background-image: url(data:image/webp;base64,UklGRtQAAABXRUJQVlA4IMgAAABQBgCdASoYACIAPtVeo0yoJaMiNVgIAQAaiWYAnTLddLAx2U6klEh2z9mOT1AJnxAbH+jPJ4OGdexIAAD+rpTqhk7SC+5Gih41e4jO4khx8TOx91O1TDW31gpcensuYxzjHD0h7c1z9gOO19ZXsVp27PxTUTUDfmlWSrKy54C9ccUVNNwhDfUYDKhxqWTmJ/R5VL6LxvFkSPFXe878snjSkINAh9bKnC6M/S+0UW6AvGGVdn0qD8Z9KgvtQuQCD5eu1QOxBpAAAA==)">
         <span class="placard"><span class="placard-project">Walley</span><span class="placard-screen">Expense log</span></span>
       </a>
     </li>
     <li class="peek-card">
       <a class="peek-link" href="/works/aware/" data-cursor="Open">
-        <img class="peek-art" src="/assets/img/art/harvesters-portrait.webp" alt="" width="600" height="840" loading="lazy" decoding="async">
+        <img class="peek-art has-preview" src="/assets/img/art/harvesters-portrait-600.webp" srcset="/assets/img/art/harvesters-portrait-400.webp 400w, /assets/img/art/harvesters-portrait-600.webp 600w" sizes="(max-width: 933px) 196px, (max-width: 1333px) 21vw, 280px" alt="" width="600" height="840" loading="lazy" decoding="async" style="background-image: url(data:image/webp;base64,UklGRroAAABXRUJQVlA4IK4AAAAwBgCdASoYACIAPt1eqE2opSQiMBVaqRAbiUAYyIE8OMHbtXNCm2VYxsnIiwbQa43d8LdlGTPNY/QAAP5gckrOPuktJXEsuXvUkQgCFj9uFGW0chjF3KEUJ+AlQPCs8J9z7j8xCUXej/jqdv0AIP0ggghOohlxNH2LfO68zc132MePNTMMlo7oyZpLDdpE/sN27lxeqrd0ibQNf7qYCzfcaGGdHU9nZRg7C4TAAAA=)">
         <img class="peek-fg" src="/assets/img/aware/leaderboard.webp" alt="AWARE recycling leaderboard" loading="lazy" decoding="async">
         <span class="placard"><span class="placard-project">AWARE</span><span class="placard-screen">Leaderboard</span></span>
       </a>
@@ -146,68 +142,68 @@
       <ul class="marquee-list" aria-hidden="true">
     <li class="peek-card">
       <a class="peek-link" href="/works/aware/" tabindex="-1" data-cursor="Open">
-        <img class="peek-art" src="/assets/img/art/almond-portrait.webp" alt="" width="600" height="840" loading="lazy" decoding="async">
+        <img class="peek-art has-preview" src="/assets/img/art/almond-portrait-600.webp" srcset="/assets/img/art/almond-portrait-400.webp 400w, /assets/img/art/almond-portrait-600.webp 600w" sizes="(max-width: 933px) 196px, (max-width: 1333px) 21vw, 280px" alt="" width="600" height="840" loading="lazy" decoding="async" style="background-image: url(data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAAAQBgCdASoYACIAPt1ip0yopiOiKrgN+RAbiUyyKdxlLxJD/AN0KVJygrZFUUro984NtzcGdhZm7QAA/uBCCcgFNgDKr4+jJG+8tYtsrC2auCXyY+kiCqF8y57dE4JQ1bkwbmNw0v5Qku6quIeAyxTgAn30b7kRhpTqFigG0rPBIn8piWchplp2BA9aJnjQTXrwgAAA)">
         <img class="peek-fg" src="/assets/img/aware/onboarding.webp" alt="" loading="lazy" decoding="async">
         <span class="placard"><span class="placard-project">AWARE</span><span class="placard-screen">Onboarding</span></span>
       </a>
     </li>
     <li class="peek-card">
       <a class="peek-link" href="/works/aware/" tabindex="-1" data-cursor="Open">
-        <img class="peek-art" src="/assets/img/art/gleaners-portrait.webp" alt="" width="600" height="840" loading="lazy" decoding="async">
+        <img class="peek-art has-preview" src="/assets/img/art/gleaners-portrait-600.webp" srcset="/assets/img/art/gleaners-portrait-400.webp 400w, /assets/img/art/gleaners-portrait-600.webp 600w" sizes="(max-width: 933px) 196px, (max-width: 1333px) 21vw, 280px" alt="" width="600" height="840" loading="lazy" decoding="async" style="background-image: url(data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAAAQBgCdASoYACIAPtleqUyoJaQlsBqqqQAbCWUAyMu+Qi9elqOK1xrJROwM3maihYw/3uibYYTjc2AA/t6ARHD2OfCkWeBVaqSeCyec02B0Qt9ZTYU2CxC5uL+5RbZlJUtlPnlWQvmXB/RePsWvI7GIdc9kGHJsLKSxu/t73jFinmkFVXwwrp+9yZxDQ5H6L5dMa5KWJq8S4AAA)">
         <img class="peek-fg" src="/assets/img/aware/scan-live.webp" alt="" loading="lazy" decoding="async">
         <span class="placard"><span class="placard-project">AWARE</span><span class="placard-screen">Live detection</span></span>
       </a>
     </li>
     <li class="peek-card">
       <a class="peek-link" href="/works/aware/" tabindex="-1" data-cursor="Open">
-        <img class="peek-art" src="/assets/img/art/sower-portrait.webp" alt="" width="600" height="840" loading="lazy" decoding="async">
+        <img class="peek-art has-preview" src="/assets/img/art/sower-portrait-600.webp" srcset="/assets/img/art/sower-portrait-400.webp 400w, /assets/img/art/sower-portrait-600.webp 600w" sizes="(max-width: 933px) 196px, (max-width: 1333px) 21vw, 280px" alt="" width="600" height="840" loading="lazy" decoding="async" style="background-image: url(data:image/webp;base64,UklGRsoAAABXRUJQVlA4IL4AAADwBgCdASoYACIAPtlao0yoJSMiNVgIAQAbCWgAzBwWlKzQZdXA7d2YONRFptxvqglQ2VdR8CpU9o2Fj4vAXNkAAMrxT/Rp8QRpdML76sAOYZCdEdc/7G9fgp/QoU49LjMq0xs0pkw4/NtO40Gd3RNNk6pyJoA/tBV9UvXHQyZngYwbYIKzcMhNF7V3ufUtFNJFUG1DhT+yyJ/rXIrE80hx0e+HygavST+TpDS1gcks4934ChPjMgFO/wNjOfoA)">
         <img class="peek-fg" src="/assets/img/aware/scan-results.webp" alt="" loading="lazy" decoding="async">
         <span class="placard"><span class="placard-project">AWARE</span><span class="placard-screen">Scan result</span></span>
       </a>
     </li>
     <li class="peek-card">
       <a class="peek-link" href="/works/aware-bin/" tabindex="-1" data-cursor="Open">
-        <img class="peek-art" src="/assets/img/art/sunrise-portrait.webp" alt="" width="600" height="840" loading="lazy" decoding="async">
+        <img class="peek-art has-preview" src="/assets/img/art/sunrise-portrait-600.webp" srcset="/assets/img/art/sunrise-portrait-400.webp 400w, /assets/img/art/sunrise-portrait-600.webp 600w" sizes="(max-width: 933px) 196px, (max-width: 1333px) 21vw, 280px" alt="" width="600" height="840" loading="lazy" decoding="async" style="background-image: url(data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAACQBACdASoYACIAPt1ip0yxJiOiMBqqqiAbiWMAvzg5TyTcK2Ac4o4RLJuKOzAA/c5pNI3Kxv2ByHUT8bJg3lb0CKY1I5v5D9Oy5IlprUcOvNSsyCgSWF0M07xDJEhaGSER+mugAAA=)">
         <img class="peek-fg peek-fg--object" src="/assets/img/bin/exploded.webp" alt="" loading="lazy" decoding="async">
         <span class="placard"><span class="placard-project">AWARE Smart Bin</span><span class="placard-screen">Exploded CAD</span></span>
       </a>
     </li>
     <li class="peek-card">
       <a class="peek-link" href="/works/aware/" tabindex="-1" data-cursor="Open">
-        <img class="peek-art" src="/assets/img/art/waterlilies-portrait.webp" alt="" width="600" height="840" loading="lazy" decoding="async">
+        <img class="peek-art has-preview" src="/assets/img/art/waterlilies-portrait-600.webp" srcset="/assets/img/art/waterlilies-portrait-400.webp 400w, /assets/img/art/waterlilies-portrait-600.webp 600w" sizes="(max-width: 933px) 196px, (max-width: 1333px) 21vw, 280px" alt="" width="600" height="840" loading="lazy" decoding="async" style="background-image: url(data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAABwBACdASoYACIAPt1YpU2opKMiMBVdURAbiWMAvnumhTUGicDoK7bs4nl2AAD+snsGbX3TekZBCb5UPLxZReaRlRYHslqMNLqf+nKEqwl9/WgRgA8+jXY7OKVrq5S0QGw0jIA8bIhRtxKymxbsgH58gxLc+qFrVlc0QzwHWd+oAAAA)">
         <img class="peek-fg" src="/assets/img/aware/home.webp" alt="" loading="lazy" decoding="async">
         <span class="placard"><span class="placard-project">AWARE</span><span class="placard-screen">Home</span></span>
       </a>
     </li>
     <li class="peek-card">
       <a class="peek-link" href="/works/walley/" tabindex="-1" data-cursor="Open">
-        <img class="peek-baked" src="/assets/img/walley/rhone-login.webp" alt="" loading="lazy" decoding="async">
+        <img class="peek-baked has-preview" src="/assets/img/walley/rhone-login-600.webp" srcset="/assets/img/walley/rhone-login-400.webp 400w, /assets/img/walley/rhone-login-600.webp 600w" sizes="(max-width: 933px) 196px, (max-width: 1333px) 21vw, 280px" alt="" width="600" height="840" loading="lazy" decoding="async" style="background-image: url(data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAABwBQCdASoYACIAPt1cqEyopSQlsBqqqRAbiWUAuwAUpCc+lRoj9M+vmPaVNFQ+pvjpbetwAP7L+uHdyCk/JBO4MqwZmrQKPn2h6WKM1kl+LwOfWCeRImFqSBhENvxIM73RHY9Z+Tj3wnsqZUisDDkF2IB0Hd7Lcy3buio5OegG6ptG+GCCdn3gZmxV/mAA)">
         <span class="placard"><span class="placard-project">Walley</span><span class="placard-screen">Sign in</span></span>
       </a>
     </li>
     <li class="peek-card">
       <a class="peek-link" href="/works/aware/" tabindex="-1" data-cursor="Open">
-        <img class="peek-art" src="/assets/img/art/greatwave-portrait.webp" alt="" width="600" height="840" loading="lazy" decoding="async">
+        <img class="peek-art has-preview" src="/assets/img/art/greatwave-portrait-600.webp" srcset="/assets/img/art/greatwave-portrait-400.webp 400w, /assets/img/art/greatwave-portrait-600.webp 600w" sizes="(max-width: 933px) 196px, (max-width: 1333px) 21vw, 280px" alt="" width="600" height="840" loading="lazy" decoding="async" style="background-image: url(data:image/webp;base64,UklGRgIBAABXRUJQVlA4IPYAAABwBwCdASoYACIAPt1mrVEopSQipWmZEBuJQBdmYADPCF4gAXZyjAzJSQUEIrJjFV1tfHrIYjhePWjgwjU5MwbPntaNgAD+8dS3ApE1f60FN0XqBa+4VzGu20As3ksNxlHr4wwCv4DKmXm4e+fzHCwYqIlfbAB0Z5mDWf/iQMuDHQbAqqu9nLzFFBMQWFpI7fs0cOm+OSL9q4X82PZZ+hksCeBtK0FQNAVqlKDrDV106QYLhwOeOl/wSk7MuAAs6eJ0DyWiw2ukLI3IvmvPPESTIrP3r3BrmysXfkMx1yA+EHkRVZaZrmE+sNj9MXJbnWTxPqx8AAA=)">
         <img class="peek-fg" src="/assets/img/aware/waste-saved.webp" alt="" loading="lazy" decoding="async">
         <span class="placard"><span class="placard-project">AWARE</span><span class="placard-screen">Waste saved</span></span>
       </a>
     </li>
     <li class="peek-card">
       <a class="peek-link" href="/works/aware/" tabindex="-1" data-cursor="Open">
-        <img class="peek-art" src="/assets/img/art/grandejatte-portrait.webp" alt="" width="600" height="840" loading="lazy" decoding="async">
+        <img class="peek-art has-preview" src="/assets/img/art/grandejatte-portrait-600.webp" srcset="/assets/img/art/grandejatte-portrait-400.webp 400w, /assets/img/art/grandejatte-portrait-600.webp 600w" sizes="(max-width: 933px) 196px, (max-width: 1333px) 21vw, 280px" alt="" width="600" height="840" loading="lazy" decoding="async" style="background-image: url(data:image/webp;base64,UklGRsIAAABXRUJQVlA4ILYAAACQBgCdASoYACIAPtFYnkyoJSKiNVgMAQAaCWIAtOgX335r3dQ1BPB0QxVg//e7KRQNkBSaCPBeLHN4cIAAAP6h5lgWW80k06HJXjc0mbKCNfBLMqf32uGyeE5NvCros6zb/JaIxkn04vru3d68WAUnTRJIKndx7A3kYsvrKjE2+UNLr8ycKHFG6lCf9Fr2s36m9C414MaOiNqqW3kiAJo0i04/QTShuzatsjGwf9In9eB2X4AAAA==)">
         <img class="peek-fg" src="/assets/img/aware/gallery.webp" alt="" loading="lazy" decoding="async">
         <span class="placard"><span class="placard-project">AWARE</span><span class="placard-screen">Gallery</span></span>
       </a>
     </li>
     <li class="peek-card">
       <a class="peek-link" href="/works/walley/" tabindex="-1" data-cursor="Open">
-        <img class="peek-baked" src="/assets/img/walley/harvest-log.webp" alt="" loading="lazy" decoding="async">
+        <img class="peek-baked has-preview" src="/assets/img/walley/harvest-log-600.webp" srcset="/assets/img/walley/harvest-log-400.webp 400w, /assets/img/walley/harvest-log-600.webp 600w" sizes="(max-width: 933px) 196px, (max-width: 1333px) 21vw, 280px" alt="" width="600" height="840" loading="lazy" decoding="async" style="background-image: url(data:image/webp;base64,UklGRtQAAABXRUJQVlA4IMgAAABQBgCdASoYACIAPtVeo0yoJaMiNVgIAQAaiWYAnTLddLAx2U6klEh2z9mOT1AJnxAbH+jPJ4OGdexIAAD+rpTqhk7SC+5Gih41e4jO4khx8TOx91O1TDW31gpcensuYxzjHD0h7c1z9gOO19ZXsVp27PxTUTUDfmlWSrKy54C9ccUVNNwhDfUYDKhxqWTmJ/R5VL6LxvFkSPFXe878snjSkINAh9bKnC6M/S+0UW6AvGGVdn0qD8Z9KgvtQuQCD5eu1QOxBpAAAA==)">
         <span class="placard"><span class="placard-project">Walley</span><span class="placard-screen">Expense log</span></span>
       </a>
     </li>
     <li class="peek-card">
       <a class="peek-link" href="/works/aware/" tabindex="-1" data-cursor="Open">
-        <img class="peek-art" src="/assets/img/art/harvesters-portrait.webp" alt="" width="600" height="840" loading="lazy" decoding="async">
+        <img class="peek-art has-preview" src="/assets/img/art/harvesters-portrait-600.webp" srcset="/assets/img/art/harvesters-portrait-400.webp 400w, /assets/img/art/harvesters-portrait-600.webp 600w" sizes="(max-width: 933px) 196px, (max-width: 1333px) 21vw, 280px" alt="" width="600" height="840" loading="lazy" decoding="async" style="background-image: url(data:image/webp;base64,UklGRroAAABXRUJQVlA4IK4AAAAwBgCdASoYACIAPt1eqE2opSQiMBVaqRAbiUAYyIE8OMHbtXNCm2VYxsnIiwbQa43d8LdlGTPNY/QAAP5gckrOPuktJXEsuXvUkQgCFj9uFGW0chjF3KEUJ+AlQPCs8J9z7j8xCUXej/jqdv0AIP0ggghOohlxNH2LfO68zc132MePNTMMlo7oyZpLDdpE/sN27lxeqrd0ibQNf7qYCzfcaGGdHU9nZRg7C4TAAAA=)">
         <img class="peek-fg" src="/assets/img/aware/leaderboard.webp" alt="" loading="lazy" decoding="async">
         <span class="placard"><span class="placard-project">AWARE</span><span class="placard-screen">Leaderboard</span></span>
       </a>
@@ -226,7 +222,7 @@
     <article class="card" data-categories="Apps|AI &amp; Vision" data-reveal-card>
   <a class="card-link" href="/works/aware/" data-cursor="View">
     <div class="card-cover"><div class="cover cover--phones" role="img" aria-label="Three AWARE screens over Hokusai's The Great Wave off Kanagawa" style="view-transition-name: cover-aware">
-  <img class="cover-art" src="/assets/img/art/greatwave-wide.webp" alt="" width="1600" height="1000" loading="lazy" decoding="async" data-depth="0.15">
+  <img class="cover-art has-preview" src="/assets/img/art/greatwave-wide-1200.webp" srcset="/assets/img/art/greatwave-wide-800.webp 800w, /assets/img/art/greatwave-wide-1200.webp 1200w, /assets/img/art/greatwave-wide-1600.webp 1600w, /assets/img/art/greatwave-wide-2400.webp 2400w" sizes="(max-width: 720px) 100vw, (max-width: 1200px) 46vw, 560px" alt="" width="2400" height="1500" loading="lazy" decoding="async" style="background-image: url(data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAADwAwCdASoYAA8APt1apkyopSOiMAgBEBuJQBOgA3YyowmqmvkUw9W8AP7oOq8XBa7eq/q+yZZHgpfZdX2hsCA52pWF37IFIXgRDL2WstVTydcAWWGaihcxDHsH/kuwNtp2FVk22bXDrP5hN+yLbdZ/+2aKxc3LjPExeQYwAAA=)" data-depth="0.15">
   <div class="cover-phones">
     <div class="cover-phone cover-phone--1"><img src="/assets/img/aware/home.webp" alt="" width="502" height="966" loading="lazy" decoding="async" data-depth="0.5"></div>
     <div class="cover-phone cover-phone--2"><img src="/assets/img/aware/scan-results.webp" alt="" width="502" height="966" loading="lazy" decoding="async" data-depth="0.8"></div>
@@ -244,7 +240,7 @@
     <article class="card" data-categories="Hardware|AI &amp; Vision" data-reveal-card>
   <a class="card-link" href="/works/aware-bin/" data-cursor="View">
     <div class="card-cover"><div class="cover cover--object" role="img" aria-label="Exploded CAD render of the smart bin over Monet's Impression, Sunrise" style="view-transition-name: cover-aware-bin">
-  <img class="cover-art" src="/assets/img/art/sunrise-wide.webp" alt="" width="1600" height="1000" loading="lazy" decoding="async" data-depth="0.15">
+  <img class="cover-art has-preview" src="/assets/img/art/sunrise-wide-1200.webp" srcset="/assets/img/art/sunrise-wide-800.webp 800w, /assets/img/art/sunrise-wide-1200.webp 1200w, /assets/img/art/sunrise-wide-1600.webp 1600w" sizes="(max-width: 720px) 100vw, (max-width: 1200px) 46vw, 560px" alt="" width="1600" height="1000" loading="lazy" decoding="async" style="background-image: url(data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAACwAwCdASoYAA8APt1cpkyopSOiMAgBEBuJYwC7AAjUwe6Lp7HBQAD97I2X+95f6RYXAIWc3lH8bcT1c0s7rn+SviWJEBD/W2FmCAAA)" data-depth="0.15">
   <div class="cover-object" style="aspect-ratio: 417 / 900"><img src="/assets/img/bin/exploded.webp" alt="" width="417" height="900" loading="lazy" decoding="async" data-depth="0.7"></div>
 </div></div>
     <div class="card-body">
@@ -258,7 +254,7 @@
     <article class="card" data-categories="Apps" data-reveal-card>
   <a class="card-link" href="/works/walley/" data-cursor="View">
     <div class="card-cover"><div class="cover cover--image" role="img" aria-label="Walley's sign-in screen over Starry Night Over the Rhône" style="view-transition-name: cover-walley">
-  <img class="cover-img" src="/assets/img/walley/cover.webp" alt="" width="1400" height="788" loading="lazy" decoding="async" data-depth="0.15">
+  <img class="cover-img has-preview" src="/assets/img/walley/cover-1400.webp" srcset="/assets/img/walley/cover-800.webp 800w, /assets/img/walley/cover-1400.webp 1400w" sizes="(max-width: 720px) 100vw, (max-width: 1200px) 46vw, 560px" alt="" width="1400" height="788" loading="lazy" decoding="async" style="background-image: url(data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAABwAwCdASoYAA4APt1apkyopSOiMAgBEBuJZwC3uC0Lf+DZ9AAA/u83SB9weC+u187xs+Kzp3wmtqu6ScESXX2VbtWTCYAA)" data-depth="0.15">
 </div></div>
     <div class="card-body">
       <p class="card-kicker"><span>2024–26</span><span>Cross-platform app</span></p>
@@ -446,7 +442,7 @@ Your level has increased to LEVEL 4!<span class="t-caret"></span></pre>
     <div class="beyond-items">
       <article class="beyond-item">
         <figure class="beyond-photo" style="--tilt: 3">
-          <img src="/assets/img/people/vtec-vinsteam-2025.avif" alt="Son and VTEC members gathered around a robotics competition table" width="1620" height="1080" loading="lazy" decoding="async">
+          <img class="has-preview" src="/assets/img/people/vtec-vinsteam-2025-1200.avif" srcset="/assets/img/people/vtec-vinsteam-2025-800.avif 800w, /assets/img/people/vtec-vinsteam-2025-1200.avif 1200w, /assets/img/people/vtec-vinsteam-2025-1600.avif 1600w" sizes="(max-width: 900px) 92vw, (max-width: 1360px) 40vw, 540px" alt="Son and VTEC members gathered around a robotics competition table" width="1600" height="1067" loading="lazy" decoding="async" style="background-image: url(data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAAAQBACdASoYABAAPt1apkyopSOiMAgBEBuJYgCdMoACMAp5sdM+xXGqQAD+ljcR6ruFEdfy0AYjknlgIQsc+4PvWV7bEbgLmxzAOlPUUiFe98hhvjvo5JPWu09oK1fcX0mePgQ/Sj7B5esxtX4E5XxKHtRrlVFmH3xR9Jz/32ifo60xu48oGH6ClJgtGAAA)">
           <figcaption>At VTEC's VinSTEAM Innovation Challenge 2025</figcaption>
         </figure>
         <div class="beyond-text" data-reveal>
@@ -456,7 +452,7 @@ Your level has increased to LEVEL 4!<span class="t-caret"></span></pre>
       </article>
       <article class="beyond-item beyond-item--flip">
         <figure class="beyond-photo" style="--tilt: -3">
-          <img src="/assets/img/people/serenade-prom-2026.avif" alt="Son co-hosting Serenade Prom 2026 on a stage lit with red and gold spotlights" width="2048" height="1365" loading="lazy" decoding="async">
+          <img class="has-preview" src="/assets/img/people/serenade-prom-2026-1200.avif" srcset="/assets/img/people/serenade-prom-2026-800.avif 800w, /assets/img/people/serenade-prom-2026-1200.avif 1200w, /assets/img/people/serenade-prom-2026-1600.avif 1600w" sizes="(max-width: 900px) 92vw, (max-width: 1360px) 40vw, 540px" alt="Son co-hosting Serenade Prom 2026 on a stage lit with red and gold spotlights" width="1600" height="1066" loading="lazy" decoding="async" style="background-image: url(data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAAAwBQCdASoYABAAPt1apkyopSOiMAgBEBuJbACdMoR4T5XTANRRAtrrUbeo7aRxKXArgAD+hz/lgcO4bXCkVcoEsk7U06hd4TJ7Z+9YfUraa8EGm+uW1CQKB51QzRX8cJYh+WpzDuIXKqVarMao+hUkFDYLmvBrYKh842AlZqGb6nLe90XA7v3lboIqlamnJat3gaJogAA=)">
           <figcaption>At Student Council hosting Serenade Prom 2026</figcaption>
         </figure>
         <div class="beyond-text" data-reveal>
@@ -466,7 +462,7 @@ Your level has increased to LEVEL 4!<span class="t-caret"></span></pre>
       </article>
       <article class="beyond-item">
         <figure class="beyond-photo" style="--tilt: 3">
-          <img src="/assets/img/people/vinmun-2025.avif" alt="Son talking with delegates during an unmoderated caucus at VINMUN 2025" width="2048" height="1365" loading="lazy" decoding="async">
+          <img class="has-preview" src="/assets/img/people/vinmun-2025-1200.avif" srcset="/assets/img/people/vinmun-2025-800.avif 800w, /assets/img/people/vinmun-2025-1200.avif 1200w, /assets/img/people/vinmun-2025-1600.avif 1600w" sizes="(max-width: 900px) 92vw, (max-width: 1360px) 40vw, 540px" alt="Son talking with delegates during an unmoderated caucus at VINMUN 2025" width="1600" height="1066" loading="lazy" decoding="async" style="background-image: url(data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAACQBACdASoYABAAPt1apkyopSOiMAgBEBuJZQAMwADpEwCEC07A9stl6HpYPoAA/tcKeuWS2XS9k0mtjXr3p/It8NJdnQz+ByUJT43is7M3RdcpH8sb5A6Q9fyMnWveXwU01t+W0pTzkBtGSleP9ut82EzkzGk1z2nNP+U3erTP4M5349EZzM07SFkr0fOSeDP4zgAA)">
           <figcaption>An unmoderated caucus with delegates at VINMUN '25</figcaption>
         </figure>
         <div class="beyond-text" data-reveal>

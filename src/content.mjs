@@ -37,10 +37,10 @@ export const peek = [
   { project: "aware", label: "AWARE", screen: "Scan result", art: "sower", fg: "aware/scan-results.webp", alt: "AWARE scan result for a plastic bottle with the CO2e it saves" },
   { project: "aware-bin", label: "AWARE Smart Bin", screen: "Exploded CAD", art: "sunrise", fg: "bin/exploded.webp", alt: "Exploded CAD render of the AWARE smart sorting bin", object: true },
   { project: "aware", label: "AWARE", screen: "Home", art: "waterlilies", fg: "aware/home.webp", alt: "AWARE home dashboard with waste and CO2 saved" },
-  { project: "walley", label: "Walley", screen: "Sign in", baked: "walley/rhone-login.webp", art: "rhone", alt: "Walley sign-in screen over Starry Night Over the Rhône" },
+  { project: "walley", label: "Walley", screen: "Sign in", baked: "walley/rhone-login", art: "rhone", alt: "Walley sign-in screen over Starry Night Over the Rhône" },
   { project: "aware", label: "AWARE", screen: "Waste saved", art: "greatwave", fg: "aware/waste-saved.webp", alt: "AWARE waste-saved insights chart" },
   { project: "aware", label: "AWARE", screen: "Gallery", art: "grandejatte", fg: "aware/gallery.webp", alt: "AWARE community gallery of upcycling ideas" },
-  { project: "walley", label: "Walley", screen: "Expense log", baked: "walley/harvest-log.webp", art: "harvest", alt: "Walley expense log over a Van Gogh wheat field" },
+  { project: "walley", label: "Walley", screen: "Expense log", baked: "walley/harvest-log", art: "harvest", alt: "Walley expense log over a Van Gogh wheat field" },
   { project: "aware", label: "AWARE", screen: "Leaderboard", art: "harvesters", fg: "aware/leaderboard.webp", alt: "AWARE recycling leaderboard" },
 ]
 
@@ -68,9 +68,7 @@ export const community = {
   intro: "Finally, meet the high school senior who loves to be a part of his community:",
   items: [
     {
-      photo: "people/vtec-vinsteam-2025.avif",
-      width: 1620,
-      height: 1080,
+      photo: "people/vtec-vinsteam-2025",
       caption: "At VTEC's VinSTEAM Innovation Challenge 2025",
       alt: "Son and VTEC members gathered around a robotics competition table",
       org: { name: "VTEC", href: "https://facebook.com/vscvtec" },
@@ -78,9 +76,7 @@ export const community = {
       text: "we strive to create a supportive environment for Vinschool students to discuss and explore technology. As the President of VTEC's Harmony chapter, I co-host and facilitate tech-solution competitions with the school's Computer Science department, welcoming not just competing teams, but also fellow tech clubs to showcase their projects.",
     },
     {
-      photo: "people/serenade-prom-2026.avif",
-      width: 2048,
-      height: 1365,
+      photo: "people/serenade-prom-2026",
       caption: "At Student Council hosting Serenade Prom 2026",
       alt: "Son co-hosting Serenade Prom 2026 on a stage lit with red and gold spotlights",
       org: { name: "Harmony's Student Council", href: "https://www.facebook.com/vschar.studentcouncil" },
@@ -88,9 +84,7 @@ export const community = {
       text: "we collect opinions to push initiatives, and we also create events that are memorable for the whole student body. As the VP of the Student Council, I spearheaded a bi-annual meeting between all class representatives and the school's principal to voice concerns and address hardships in our learning environment.",
     },
     {
-      photo: "people/vinmun-2025.avif",
-      width: 2048,
-      height: 1365,
+      photo: "people/vinmun-2025",
       caption: "An unmoderated caucus with delegates at VINMUN '25",
       alt: "Son talking with delegates during an unmoderated caucus at VINMUN 2025",
       org: { name: "VINMUN", href: "https://www.facebook.com/VinschoolMUN" },
@@ -223,7 +217,7 @@ export const projects = [
       "A cross-platform smart digital wallet designed to streamline personal expense tracking, budget management, and financial data visualization.",
     tagline:
       "A smart wallet for teenagers: expense tracking, budgets and receipt scanning, with a personalised AI roadmap for spending and investing pocket money.",
-    cover: { type: "image", src: "walley/cover.webp", alt: "Walley's sign-in screen over Starry Night Over the Rhône", width: 1400, height: 788 },
+    cover: { type: "image", src: "walley/cover", alt: "Walley's sign-in screen over Starry Night Over the Rhône" },
     meta: [
       ["Role", "Full-stack technical developer"],
       ["Team", "Two high school students"],

@@ -15,11 +15,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#f8f6f3">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap">
-<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="preload" href="/assets/fonts/libre-baskerville-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=a0f7653426">
 <script>
 // Hide animated elements only when motion is allowed, and show them again if
 // the motion script never starts (blocked CDN, old browser, script error).
@@ -31,12 +28,11 @@
   setTimeout(function () { if (!d.classList.contains("motion-ready")) d.classList.remove("motion") }, 3000)
 })()
 </script>
-<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/lenis@1.3.3/dist/lenis.min.js"></script>
-<script defer src="/assets/js/main.js"></script>
+<script defer src="/assets/vendor/gsap-3.13.0.min.js"></script>
+<script defer src="/assets/vendor/scrolltrigger-3.13.0.min.js"></script>
+<script defer src="/assets/vendor/splittext-3.13.0.min.js"></script>
+<script defer src="/assets/vendor/lenis-1.3.3.min.js"></script>
+<script defer src="/assets/js/main.js?v=54db53fe5f"></script>
 
 </head>
 <body data-page="project">
@@ -54,10 +50,10 @@
 <article class="project" data-project="mathchamp">
   <header class="project-hero">
     <a class="back-link" href="/works/"><span aria-hidden="true">←</span> All works</a>
-    <p class="eyebrow" data-reveal><span>2025</span><span>Java game</span></p>
-    <h1 class="project-title" data-split>MathChamp</h1>
-    <p class="project-tagline" data-reveal>A console game for wise mathematicians: is this sequence arithmetic, quadratic, cubic or prime? Guess right to climb ten levels.</p>
-    <div data-reveal><ul class="tags"><li>Java</li><li>Algorithms</li></ul></div>
+    <p class="eyebrow intro" style="--delay: 0.05s"><span>2025</span><span>Java game</span></p>
+    <h1 class="project-title intro-title"><span class="w" style="--i: 0">MathChamp</span></h1>
+    <p class="project-tagline intro" style="--delay: 0.35s">A console game for wise mathematicians: is this sequence arithmetic, quadratic, cubic or prime? Guess right to climb ten levels.</p>
+    <div class="intro" style="--delay: 0.45s"><ul class="tags"><li>Java</li><li>Algorithms</li></ul></div>
   </header>
   <figure class="project-cover"><div class="cover cover--tool cover--math" role="img" aria-label="A terminal running MathChamp, cycling through sequences" style="view-transition-name: cover-mathchamp">
   <div class="term">
