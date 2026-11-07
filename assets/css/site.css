@@ -86,6 +86,7 @@ h1, h2, h3, p, figure, dl, dd { margin: 0; }
   view-transition-name: site-nav;
 }
 .nav-wrap.is-hidden { transform: translate(-50%, -140%); }
+.nav-wrap.is-hidden:focus-within { transform: translateX(-50%); }
 .nav {
   display: flex; align-items: center; gap: clamp(28px, 6vw, 64px);
   padding: 10px 26px; border-radius: 999px;
@@ -626,7 +627,6 @@ h1, h2, h3, p, figure, dl, dd { margin: 0; }
 .code-window { margin-top: 36px; border-radius: 20px; overflow: hidden; background: #0d1330; text-align: left; box-shadow: 0 40px 70px -50px rgb(0 22 102 / 0.8); }
 .code-window figcaption { display: flex; align-items: center; gap: 14px; padding: 12px 18px; background: #182044; color: #aab4dc; font-family: var(--mono); font-size: 0.82rem; }
 .code-window .browser-dots i { width: 10px; height: 10px; }
-.code-lang { margin-left: auto; color: var(--orange); }
 .code-window pre { margin: 0; padding: 24px 26px; overflow-x: auto; font-family: var(--mono); font-size: clamp(0.78rem, 1.4vw, 0.9rem); line-height: 1.65; color: #e1e7ff; }
 
 .next-project { max-width: 1100px; margin: clamp(110px, 16vh, 160px) auto 0; padding-inline: var(--gutter); }

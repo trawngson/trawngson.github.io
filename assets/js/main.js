@@ -276,8 +276,10 @@
     const update = () => {
       const y = window.scrollY
       wrap.classList.toggle("is-scrolled", y > 24)
-      wrap.classList.toggle("is-hidden", y > 260 && y > last + 2)
-      if (y < last - 2) wrap.classList.remove("is-hidden")
+      // Hide while scrolling down and stay hidden until the visitor scrolls up.
+      // Smooth scrolling ends with tiny steps, so a small delta must not show it.
+      if (y <= 260 || y < last - 2) wrap.classList.remove("is-hidden")
+      else if (y > last + 2) wrap.classList.add("is-hidden")
       last = y
       const max = document.documentElement.scrollHeight - innerHeight
       if (bar) bar.style.transform = `scaleX(${max > 0 ? Math.min(y / max, 1) : 0})`

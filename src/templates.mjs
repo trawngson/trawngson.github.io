@@ -547,7 +547,7 @@ function codeBlock(project) {
   return `<section class="code" aria-labelledby="code-title">
   <h2 id="code-title" class="section-title" data-split>From the source</h2>
   <figure class="code-window" data-reveal>
-    <figcaption><span class="browser-dots"><i></i><i></i><i></i></span><span>${esc(c.file)}</span><span class="code-lang">${esc(c.lang)}</span></figcaption>
+    <figcaption><span class="browser-dots"><i></i><i></i><i></i></span><span>${esc(c.file)}</span></figcaption>
     <pre><code>${esc(c.body)}</code></pre>
   </figure>
 </section>`

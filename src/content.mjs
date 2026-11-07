@@ -352,7 +352,6 @@ export const projects = [
       ["2 s", "cooldown", "So one wave of the hand is one command."],
     ],
     code: {
-      lang: "Python",
       file: "TrackingModel.py",
       body: `# Left
 if (
@@ -390,7 +389,6 @@ if (
       ["0", "setup", "Install it in Tampermonkey and it runs on every LMS page."],
     ],
     code: {
-      lang: "JavaScript",
       file: "Blur Canvas Grades.user.js",
       body: `const blurGrades = () => {
     const feedbackElements = document.querySelectorAll('.recent_feedback_icon'); // Adjust selector as needed
@@ -437,7 +435,6 @@ observer.observe(document.body, { childList: true, subtree: true });`,
       ["10", "levels", "New types unlock at levels 3, 5 and 7."],
     ],
     code: {
-      lang: "Java",
       file: "SequenceType.java",
       body: `public enum SequenceType {
     ARITHMETIC("Arithmetic", 1), // an + b
@@ -479,7 +476,6 @@ observer.observe(document.body, { childList: true, subtree: true });`,
       ["2022", "where it started", "One of the first repositories on my GitHub."],
     ],
     code: {
-      lang: "Java",
       file: "Morse.java",
       body: `public static String toMorse(String str) {
     StringBuilder result = new StringBuilder();
