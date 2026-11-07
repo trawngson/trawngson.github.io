@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blur Canvas Grades | Nguyen Truong Son</title>
+<meta name="description" content="A Tampermonkey script that blurs the grades in Canvas LMS's Recent Feedback panel so nobody can peek, and reveals each one only while you hover it.">
+<link rel="canonical" href="https://truongson.me/works/blur-canvas-grades/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nguyen Truong Son">
+<meta property="og:title" content="Blur Canvas Grades | Nguyen Truong Son">
+<meta property="og:description" content="A Tampermonkey script that blurs the grades in Canvas LMS's Recent Feedback panel so nobody can peek, and reveals each one only while you hover it.">
+<meta property="og:url" content="https://truongson.me/works/blur-canvas-grades/">
+<meta property="og:image" content="https://truongson.me/assets/img/og-card.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f8f6f3">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap">
+<link rel="stylesheet" href="/assets/css/site.css">
+<script>
+// Hide animated elements only when motion is allowed, and show them again if
+// the motion script never starts (blocked CDN, old browser, script error).
+(function () {
+  var d = document.documentElement
+  d.classList.add("js")
+  if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return
+  d.classList.add("motion")
+  setTimeout(function () { if (!d.classList.contains("motion-ready")) d.classList.remove("motion") }, 3000)
+})()
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lenis@1.3.3/dist/lenis.min.js"></script>
+<script defer src="/assets/js/main.js"></script>
+
+</head>
+<body data-page="project">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"><span></span></div>
+<header class="nav-wrap">
+  <nav class="nav" aria-label="Primary">
+    <a class="nav-link" href="/works/"><span>Works</span></a>
+    <a class="logo" href="/" aria-label="Truong Son, home">truong<em>son</em></a>
+    <a class="nav-link" href="/contact/"><span>Contact</span></a>
+  </nav>
+</header>
+<main id="main">
+
+<article class="project" data-project="blur-canvas-grades">
+  <header class="project-hero">
+    <a class="back-link" href="/works/"><span aria-hidden="true">←</span> All works</a>
+    <p class="eyebrow" data-reveal><span>2024</span><span>Userscript</span></p>
+    <h1 class="project-title" data-split>Blur Canvas Grades</h1>
+    <p class="project-tagline" data-reveal>Blurs the grades in Canvas LMS's Recent Feedback panel so classmates can't peek at your screen, and reveals each one while you hover it.</p>
+    <div data-reveal><ul class="tags"><li>JavaScript</li><li>Tampermonkey</li></ul></div>
+  </header>
+  <figure class="project-cover"><div class="cover cover--tool cover--blur" role="img" aria-label="A Recent Feedback panel with blurred grades, one revealed under the cursor" style="view-transition-name: cover-blur-canvas-grades">
+  <div class="lms" aria-hidden="true">
+    <div class="lms-head"><span class="lms-logo"></span><b>Dashboard</b><span class="lms-pill">Canvas</span></div>
+    <div class="lms-panel">
+      <p class="lms-title">Recent Feedback</p>
+      <div class="lms-row lms-row--1"><span class="lms-check">✓</span><span class="lms-name">Further Maths: Unit 4 test</span><span class="lms-grade">47 / 50</span></div>
+      <div class="lms-row lms-row--2"><span class="lms-check">✓</span><span class="lms-name">Physics: Lab report</span><span class="lms-grade">9.5 / 10</span></div>
+      <div class="lms-row lms-row--3"><span class="lms-check">✓</span><span class="lms-name">Computer Science: Project</span><span class="lms-grade">A*</span></div>
+    </div>
+  </div>
+  <span class="blur-spy" aria-hidden="true">🕵️</span>
+  <svg class="blur-cursor" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 8-6 1.5L10 19z" fill="#fff" stroke="#001666" stroke-width="1.6" stroke-linejoin="round"/></svg>
+</div></figure>
+  <div class="project-body">
+    <aside class="project-meta" aria-label="Project details" data-reveal>
+      <dl>
+        <div><dt>Role</dt><dd>Solo project</dd></div>
+        <div><dt>Stack</dt><dd>JavaScript, Tampermonkey, Greasy Fork</dd></div>
+        <div><dt>License</dt><dd>MIT</dd></div>
+      </dl>
+      <div class="project-links">
+        <a class="btn btn--orange" href="https://github.com/trawngson/blurcanvasgrades" target="_blank" rel="noopener" data-magnetic>View on GitHub <svg class="arrow arrow--ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </aside>
+    <div class="project-overview">
+      <h2 class="kicker" data-reveal>Overview</h2>
+      <p data-reveal>The home page of our school's Canvas LMS lists your latest grades in a Recent Feedback panel, in plain view of anyone glancing at your screen. This userscript blurs them and unblurs a grade only while your cursor is over it.</p>
+      <p data-reveal>Canvas loads its content dynamically, so a MutationObserver re-applies the blur whenever the page changes.</p>
+    </div>
+  </div>
+  
+  <section class="highlights" aria-labelledby="hl-title">
+    <h2 id="hl-title" class="section-title" data-split>Highlights</h2>
+    <ul class="highlight-grid" data-stagger>
+      <li class="highlight">
+        <span class="hl-num" data-count="3 px">3 px</span>
+        <span class="hl-label">of privacy</span>
+        <p>Just enough blur to hide a grade at a glance.</p>
+      </li>
+      <li class="highlight">
+        <span class="hl-num" data-count="0">0</span>
+        <span class="hl-label">setup</span>
+        <p>Install it in Tampermonkey and it runs on every LMS page.</p>
+      </li>
+    </ul>
+  </section>
+  
+  <section class="code" aria-labelledby="code-title">
+  <h2 id="code-title" class="section-title" data-split>From the source</h2>
+  <figure class="code-window" data-reveal>
+    <figcaption><span class="browser-dots"><i></i><i></i><i></i></span><span>Blur Canvas Grades.user.js</span><span class="code-lang">JavaScript</span></figcaption>
+    <pre><code>const blurGrades = () =&gt; {
+    const feedbackElements = document.querySelectorAll('.recent_feedback_icon'); // Adjust selector as needed
+    feedbackElements.forEach(element =&gt; {
+        element.style.transition = 'filter 0.2s ease';
+        element.style.filter = 'blur(3px)';
+        element.addEventListener('mouseover', function() {
+            element.style.filter = 'blur(0)';
+        });
+        element.addEventListener('mouseout', function() {
+            element.style.filter = 'blur(3px)';
+        });
+    });
+};
+
+// Mutation observer to handle dynamic content updates
+const observer = new MutationObserver(blurGrades);
+observer.observe(document.body, { childList: true, subtree: true });</code></pre>
+  </figure>
+</section>
+  <nav class="next-project" aria-label="Next project">
+    <a href="/works/mathchamp/" data-cursor="Next">
+      <span class="next-label">Next project</span>
+      <span class="next-title">MathChamp <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span class="next-kind"><span>2025</span><span>Java game</span></span>
+    </a>
+  </nav>
+</article>
+<section class="contact" aria-labelledby="contact-title">
+  <div class="section-head">
+    <svg class="section-icon section-icon--fax" aria-hidden="true" focusable="false" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg"><path d="M 13.554 4.121 L 14.357 3.56 L 14.357 1.832 L 9.305 0 L 0 6.505 L 0 8.231 L 0.801 8.522 L 0 9.082 L 0 11.948 L 8.645 15.093 L 18 11.695 L 18 5.736 Z M 9.396 0.684 L 13.392 2.133 L 4.958 8.029 L 0.965 6.578 Z M 0.613 7.102 L 4.696 8.586 L 4.696 9.287 L 0.613 7.803 Z M 8.339 14.33 L 0.613 11.52 L 0.613 9.679 L 8.339 12.49 Z M 8.6 11.933 L 0.965 9.155 L 1.505 8.778 L 5.048 10.066 L 12.941 4.55 L 17.035 6.037 Z" fill="var(--navy)" height="15.093399999999999px" id="TcVBdGAML" transform="translate(3.5 1)" width="18px"/><path d="M 1.103 0.086 C 1.136 0.109 1.162 0.135 1.182 0.164 C 1.284 0.313 1.209 0.528 0.982 0.686 C 0.711 0.876 0.327 0.914 0.123 0.772 C 0.09 0.749 0.064 0.722 0.044 0.694 C -0.057 0.545 0.018 0.33 0.245 0.171 C 0.516 -0.018 0.9 -0.056 1.103 0.086 Z" fill="var(--navy)" height="1px" id="XB9sHV6XO" transform="translate(13.038 10.299)" width="1.2268513404660126px"/><path d="M 1.103 0.086 C 1.136 0.109 1.162 0.135 1.182 0.164 C 1.284 0.313 1.209 0.528 0.982 0.686 C 0.711 0.876 0.326 0.914 0.123 0.772 C 0.09 0.749 0.064 0.722 0.045 0.694 C -0.057 0.545 0.018 0.33 0.245 0.171 C 0.515 -0.018 0.9 -0.056 1.103 0.086 Z" fill="var(--navy)" height="1px" id="L22u6owDv" transform="translate(11.631 9.787)" width="1.2266147736854904px"/><path d="M 1.104 0.086 C 1.136 0.109 1.163 0.135 1.182 0.164 C 1.284 0.313 1.209 0.528 0.982 0.686 C 0.711 0.876 0.327 0.914 0.123 0.772 C 0.09 0.749 0.064 0.722 0.045 0.694 C -0.057 0.545 0.018 0.33 0.245 0.171 C 0.516 -0.018 0.9 -0.056 1.104 0.086 Z" fill="var(--navy)" height="1px" id="f0gDmi85_" transform="translate(14.265 9.441)" width="1.2269392586073167px"/><path d="M 1.104 0.086 C 1.137 0.109 1.163 0.135 1.182 0.164 C 1.284 0.313 1.209 0.528 0.982 0.686 C 0.711 0.876 0.327 0.914 0.123 0.772 C 0.09 0.749 0.064 0.722 0.045 0.693 C -0.057 0.544 0.018 0.33 0.245 0.171 C 0.516 -0.018 0.9 -0.056 1.104 0.086 Z" fill="var(--navy)" height="1px" id="XRmJgJI3i" transform="translate(12.858 8.93)" width="1.2269392586073025px"/><path d="M 1.104 0.086 C 1.137 0.109 1.163 0.135 1.182 0.164 C 1.284 0.313 1.209 0.528 0.982 0.686 C 0.711 0.876 0.327 0.914 0.123 0.772 C 0.091 0.749 0.064 0.722 0.045 0.694 C -0.057 0.545 0.018 0.33 0.245 0.171 C 0.516 -0.018 0.9 -0.056 1.104 0.086 Z" fill="var(--navy)" height="1px" id="wsCLkGZ6y" transform="translate(15.492 8.583)" width="1.2268689103426667px"/><path d="M 1.104 0.086 C 1.136 0.109 1.163 0.135 1.182 0.164 C 1.284 0.313 1.209 0.528 0.982 0.687 C 0.711 0.876 0.327 0.914 0.123 0.772 C 0.09 0.749 0.064 0.722 0.045 0.694 C -0.057 0.545 0.018 0.33 0.245 0.171 C 0.516 -0.018 0.9 -0.056 1.104 0.086 Z" fill="var(--navy)" height="1px" id="UqTGtjMla" transform="translate(14.085 8.072)" width="1.2269055199070777px"/><path d="M 1.104 0.086 C 1.137 0.109 1.163 0.135 1.182 0.164 C 1.284 0.313 1.209 0.528 0.982 0.686 C 0.711 0.876 0.327 0.914 0.123 0.772 C 0.09 0.749 0.064 0.722 0.045 0.694 C -0.057 0.545 0.018 0.33 0.245 0.171 C 0.516 -0.018 0.9 -0.056 1.104 0.086 Z" fill="var(--navy)" height="1px" id="RaGfd1gJR" transform="translate(16.719 7.726)" width="1.2268147736854758px"/><path d="M 1.104 0.086 C 1.137 0.109 1.163 0.135 1.182 0.164 C 1.284 0.313 1.209 0.528 0.982 0.687 C 0.711 0.876 0.327 0.914 0.123 0.772 C 0.09 0.749 0.064 0.722 0.045 0.694 C -0.057 0.545 0.018 0.33 0.245 0.171 C 0.516 -0.018 0.9 -0.056 1.104 0.086 Z" fill="var(--navy)" height="1px" id="gI39y_TTg" transform="translate(15.311 7.214)" width="1.22674442542084px"/><path d="M 1.104 0.086 C 1.136 0.109 1.163 0.135 1.182 0.164 C 1.284 0.313 1.209 0.528 0.982 0.687 C 0.711 0.876 0.327 0.914 0.123 0.772 C 0.09 0.749 0.064 0.722 0.044 0.694 C -0.057 0.545 0.018 0.33 0.245 0.171 C 0.516 -0.018 0.9 -0.056 1.104 0.086 Z" fill="var(--navy)" height="1px" id="B6pvGR_Wl" transform="translate(17.946 6.868)" width="1.2268147736854758px"/><path d="M 1.104 0.086 C 1.136 0.109 1.163 0.135 1.182 0.164 C 1.284 0.313 1.209 0.528 0.982 0.686 C 0.711 0.876 0.327 0.914 0.123 0.772 C 0.09 0.749 0.064 0.722 0.045 0.694 C -0.057 0.545 0.018 0.33 0.245 0.171 C 0.516 -0.018 0.9 -0.056 1.104 0.086 Z" fill="var(--navy)" height="1px" id="bbeGa4AZ4" transform="translate(16.538 6.357)" width="1.2268147736854687px"/><path d="M 2.917 0.02 C 2.566 0.148 2.205 0.26 1.867 0.419 C 1.367 0.654 0.921 1.047 0.576 1.474 C 0.262 1.863 -0.006 2.338 0 2.852 C 0.006 3.389 0.4 3.737 0.865 3.925 C 1.522 4.191 2.353 4.166 3.045 4.112 C 3.825 4.051 4.592 3.871 5.304 3.546 C 6.661 2.924 8.101 2.211 9.628 2.175 C 9.927 2.168 10.389 2.207 10.537 2.424 C 10.705 2.671 10.516 2.887 10.263 3.014 C 9.857 3.219 9.408 3.321 9.009 3.548 C 8.488 3.844 8.139 4.325 7.991 4.902 C 7.893 5.285 8.484 5.447 8.582 5.065 C 8.858 3.99 9.866 3.95 10.688 3.481 C 11.4 3.075 11.355 2.058 10.602 1.728 C 10.181 1.542 9.702 1.542 9.251 1.585 C 8.571 1.651 7.906 1.833 7.26 2.052 C 6.417 2.337 5.642 2.755 4.822 3.092 C 4.081 3.396 3.267 3.515 2.471 3.525 C 1.936 3.532 1.115 3.546 0.716 3.123 C 0.439 2.831 0.734 2.318 0.904 2.056 C 1.188 1.618 1.612 1.257 2.066 1.004 C 2.381 0.829 2.742 0.733 3.08 0.61 C 3.448 0.476 3.289 -0.116 2.917 0.02 Z" fill="var(--orange)" height="5.282784710833035px" id="jfAGWIIWN" transform="translate(7.811 13.717)" width="11.195729794649612px"/></svg>
+    <h2 id="contact-title" class="section-title section-title--xl" data-split>Ready to build something amazing?</h2>
+    <p class="section-lede" data-reveal>I'd love to connect with you!</p>
+  </div>
+  <ul class="contact-list" data-stagger>
+    <li>
+      <a class="contact-row" href="mailto:contact@truongson.me" data-magnetic>
+        <span class="contact-label">Email</span>
+        <span class="contact-value">contact@truongson.me <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a><button class="copy-btn" type="button" data-copy="contact@truongson.me" aria-label="Copy email address"><span>Copy</span></button>
+    </li>
+<li>
+      <a class="contact-row" href="https://github.com/trawngson" target="_blank" rel="noopener" data-magnetic>
+        <span class="contact-label">GitHub</span>
+        <span class="contact-value">github.com/trawngson <svg class="arrow arrow--ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+    </li>
+<li>
+      <a class="contact-row" href="https://facebook.com/sonntt.az" target="_blank" rel="noopener" data-magnetic>
+        <span class="contact-label">Facebook</span>
+        <span class="contact-value">facebook.com/sonntt.az <svg class="arrow arrow--ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+    </li>
+  </ul>
+  
+</section>
+
+</main>
+<footer class="footer">
+  <a class="logo logo--footer" href="/" aria-label="Truong Son, home">truong<em>son</em></a>
+  <p>© 2026 Made with <span class="heart" aria-label="love">♥️</span> from TS</p>
+  <button class="to-top" type="button" data-to-top>Back to top <span aria-hidden="true">↑</span></button>
+</footer>
+</body>
+</html>
