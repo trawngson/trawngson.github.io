@@ -57,6 +57,8 @@ works page, filters and project page appear automatically.
 Everything loads from this site, so a slow network only has one server to
 connect to. The top of every page animates in plain CSS, so it appears as soon
 as the page paints; the animation libraries handle scroll effects further down.
+Once a page has loaded, its remaining images download one at a time in the
+background, in page order, unless the visitor has turned on data saver.
 If they fail to load, or the visitor prefers reduced motion, every page still
 shows all of its content. Page-to-page morphs use the browser's View
 Transitions API where supported.

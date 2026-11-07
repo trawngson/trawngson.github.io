@@ -99,6 +99,31 @@
     })
   })
 
+  // Load ahead: once the page has loaded, fetch the remaining lazy images one
+  // at a time in page order, so a slow connection spends the time someone
+  // reads the top of the page on what they'll scroll to next. Only one
+  // background image downloads at a time, and the browser still puts images
+  // on screen first. Skipped when the visitor has asked to save data.
+  safely("load ahead", () => {
+    const connection = navigator.connection
+    if (connection?.saveData || /2g$/.test(connection?.effectiveType ?? "")) return
+    const begin = () => {
+      const queue = $$('img[loading="lazy"]').filter((img) => !img.complete && !img.closest('[aria-hidden="true"]'))
+      const next = () => {
+        const img = queue.shift()
+        if (!img) return
+        if (img.complete) return next()
+        img.addEventListener("load", next, { once: true })
+        img.addEventListener("error", next, { once: true })
+        img.loading = "eager"
+      }
+      next()
+    }
+    const whenIdle = (fn) => (window.requestIdleCallback ? requestIdleCallback(fn, { timeout: 2000 }) : setTimeout(fn, 300))
+    if (document.readyState === "complete") whenIdle(begin)
+    else addEventListener("load", () => whenIdle(begin), { once: true })
+  })
+
   safely("to-top", () => {
     $$("[data-to-top]").forEach((btn) =>
       btn.addEventListener("click", () => {
