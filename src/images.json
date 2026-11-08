@@ -102,6 +102,60 @@
     ],
     "preview": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAABwBACdASoYACIAPt1YpU2opKMiMBVdURAbiWMAvnumhTUGicDoK7bs4nl2AAD+snsGbX3TekZBCb5UPLxZReaRlRYHslqMNLqf+nKEqwl9/WgRgA8+jXY7OKVrq5S0QGw0jIA8bIhRtxKymxbsgH58gxLc+qFrVlc0QzwHWd+oAAAA"
   },
+  "lunch/phone": {
+    "format": "webp",
+    "width": 1179,
+    "height": 2394,
+    "widths": [
+      1179
+    ],
+    "preview": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAABQBACdASoYADEAPt1qrFEopiQiqAgBEBuJaQDNhBZlyD2tKF/TesK/90ngAP7wNGqXadnSK+xBZFbZKsrv8nBKtpgW+n919C18hNH/5Pg4ovfep31nsSnHrvTkchI2jGT3h6DwM+RwYAAA"
+  },
+  "lunch/thursday": {
+    "format": "webp",
+    "width": 2880,
+    "height": 1880,
+    "widths": [
+      2880
+    ],
+    "preview": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAADwAgCdASoYABAAPt1cp0yopSOiMAgBEBuJZ2llAD4OAAD+8H/1l3Ckoc2/TcHT2u7JjQ0L/ZJ5uJ1dUVoydKAA"
+  },
+  "mathchamp/correct": {
+    "format": "webp",
+    "width": 1884,
+    "height": 1434,
+    "widths": [
+      1884
+    ],
+    "preview": null
+  },
+  "mathchamp/miss": {
+    "format": "webp",
+    "width": 1884,
+    "height": 1365,
+    "widths": [
+      1884
+    ],
+    "preview": null
+  },
+  "mathchamp/win": {
+    "format": "webp",
+    "width": 1884,
+    "height": 441,
+    "widths": [
+      1884
+    ],
+    "preview": null
+  },
+  "morse/jshell": {
+    "format": "webp",
+    "width": 1968,
+    "height": 1293,
+    "widths": [
+      1968
+    ],
+    "preview": null
+  },
   "people/serenade-prom-2026": {
     "format": "avif",
     "width": 1600,
@@ -134,6 +188,45 @@
       1600
     ],
     "preview": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAAAQBACdASoYABAAPt1apkyopSOiMAgBEBuJYgCdMoACMAp5sdM+xXGqQAD+ljcR6ruFEdfy0AYjknlgIQsc+4PvWV7bEbgLmxzAOlPUUiFe98hhvjvo5JPWu09oK1fcX0mePgQ/Sj7B5esxtX4E5XxKHtRrlVFmH3xR9Jz/32ifo60xu48oGH6ClJgtGAAA"
+  },
+  "teacher-day/compose": {
+    "format": "webp",
+    "width": 2880,
+    "height": 1800,
+    "widths": [
+      800,
+      1200,
+      1600,
+      2400,
+      2880
+    ],
+    "preview": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAQBACdASoYAA8APt1eqU2opSQiMAgBEBuJYwC7AB6vFfr2Sbu0Zxs1XADK8WIXz2YQOfa/iVqKeCZgGkcgmpRrFMPHgsdOlPVmZXM/Gd/jVYz5NBAp15AA"
+  },
+  "teacher-day/peek": {
+    "format": "webp",
+    "width": 2880,
+    "height": 1800,
+    "widths": [
+      800,
+      1200,
+      1600,
+      2400,
+      2880
+    ],
+    "preview": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAAAwBACdASoYAA8APt1cpkyopSOiMAgBEBuJYwC06CPtx1N5m81Ok+VyTswA/pE4XpUhLvo6zmJhL9OZSyl6Ie8zmkdAUkWV+JTnov/ai32mxghjU1UJcQ4pBXAAAA=="
+  },
+  "teacher-day/reader": {
+    "format": "webp",
+    "width": 2880,
+    "height": 1800,
+    "widths": [
+      800,
+      1200,
+      1600,
+      2400,
+      2880
+    ],
+    "preview": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAwCdASoYAA8APt1ep00opSOiMAgBEBuJYwC06BheuuNKUK6m6hiAAMrwezvMT1PQD8FSkOCX7d+Zp2BQTxD4KNwchMmZaCeYyjnJpzaAAA=="
   },
   "walley/cover": {
     "format": "webp",

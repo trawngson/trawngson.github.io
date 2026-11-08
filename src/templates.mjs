@@ -607,6 +607,73 @@ function demoBlock(project) {
 </section>`
 }
 
+// iOS status-bar glyphs for the phone frame.
+const IOS = {
+  signal: '<svg viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>',
+  wifi: '<svg viewBox="0 0 16 12"><path d="M8 2.6a9.6 9.6 0 0 1 6.6 2.6l1.2-1.2A11.3 11.3 0 0 0 8 .9 11.3 11.3 0 0 0 .2 4l1.2 1.2A9.6 9.6 0 0 1 8 2.6Zm0 3.4a6.2 6.2 0 0 1 4.2 1.6l1.2-1.2A7.9 7.9 0 0 0 8 4.3a7.9 7.9 0 0 0-5.4 2.1l1.2 1.2A6.2 6.2 0 0 1 8 6Zm0 3.4c.7 0 1.3.3 1.8.7L8 11.9l-1.8-1.8c.5-.4 1.1-.7 1.8-.7Z"/></svg>',
+  battery: '<svg viewBox="0 0 27 13"><rect x="0.5" y="0.5" width="23" height="12" rx="3.6" fill="none" stroke="currentColor" opacity="0.4"/><rect x="2" y="2" width="20" height="9" rx="2.2"/><path d="M25 4.5v4c.8-.3 1.4-1.1 1.4-2s-.6-1.7-1.4-2Z" opacity="0.45"/></svg>',
+  back: '<svg viewBox="0 0 12 20"><path d="M9.5 2 2 10l7.5 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  more: '<svg viewBox="0 0 20 4"><circle cx="2" cy="2" r="2"/><circle cx="10" cy="2" r="2"/><circle cx="18" cy="2" r="2"/></svg>',
+}
+
+const SCREEN_SIZES = {
+  half: "(max-width: 720px) calc(100vw - 32px), (max-width: 1180px) 46vw, 540px",
+  full: "(max-width: 1180px) calc(100vw - 32px), 1100px",
+  phone: "(max-width: 720px) 60vw, (max-width: 1180px) 22vw, 260px",
+}
+
+// One real screenshot, in the frame it was taken in: a terminal window (part
+// of the image), a Safari window, or an iPhone running Safari.
+function screenFrame(item, s, alt) {
+  const frame = item.frame ?? s.frame
+  const span = item.span === "full" ? "full" : "half"
+  if (frame === "browser") {
+    return `<div class="screen-frame screen-frame--browser">
+      <div class="browser" style="--bar: ${item.bar ?? s.bar ?? "#f6f5f4"}; --page-w: ${s.pageWidth ?? 1440}">
+        ${safariToolbar(item.url ?? s.url)}
+        ${picture(item.src, { alt, sizes: SCREEN_SIZES[span] })}
+      </div>
+    </div>`
+  }
+  if (frame === "phone") {
+    return `<div class="screen-frame screen-frame--phone">
+      <div class="phone" style="--status: ${item.status ?? "#fff"}">
+        <div class="phone-screen">
+          <div class="phone-status" aria-hidden="true"><span class="phone-time">9:41</span><span class="phone-island"></span><span class="phone-icons">${IOS.signal}${IOS.wifi}${IOS.battery}</span></div>
+          ${picture(item.src, { alt, sizes: SCREEN_SIZES.phone })}
+          <div class="phone-bar" aria-hidden="true"><span class="phone-btn">${IOS.back}</span><span class="phone-url">${esc(item.url ?? s.url)}</span><span class="phone-btn">${IOS.more}</span></div>
+          <span class="phone-home" aria-hidden="true"></span>
+        </div>
+      </div>
+    </div>`
+  }
+  return `<div class="screen-frame screen-frame--terminal">${picture(item.src, { alt, sizes: SCREEN_SIZES[span] })}</div>`
+}
+
+function screensBlock(project) {
+  const s = project.screens
+  if (!s) return ""
+  const numbered = s.items.length > 1
+  return `<section class="screens" aria-labelledby="screens-title">
+  <div class="screens-head">
+    <h2 id="screens-title" class="section-title" data-split>${esc(s.title ?? "See it in action")}</h2>
+    ${s.lede ? `<p class="section-lede" data-reveal>${esc(s.lede)}</p>` : ""}
+  </div>
+  <ol class="screens-grid${s.layout ? ` screens-grid--${s.layout}` : ""}" data-stagger>
+    ${s.items
+      .map(
+        (item, i) => `<li class="screen${item.span ? ` screen--${item.span}` : ""}">
+      <figure>
+        ${screenFrame(item, s, item.alt)}
+        <figcaption>${numbered ? `<b>${String(i + 1).padStart(2, "0")}</b> ` : ""}${esc(item.caption)}</figcaption>
+      </figure>
+    </li>`,
+      )
+      .join("\n    ")}
+  </ol>
+</section>`
+}
+
 function codeBlock(project) {
   const c = project.code
   if (!c) return ""
@@ -645,6 +712,7 @@ export function projectPage(project, next) {
     </div>
   </div>
   ${demoBlock(project)}
+  ${screensBlock(project)}
   <section class="highlights" aria-labelledby="hl-title">
     <h2 id="hl-title" class="section-title" data-split>Highlights</h2>
     <ul class="highlight-grid" data-stagger>

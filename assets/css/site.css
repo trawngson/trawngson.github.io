@@ -706,6 +706,41 @@ h1, h2, h3, p, figure, dl, dd { margin: 0; }
 }
 .demo-figure figcaption { margin: 14px auto 0; max-width: 60ch; font-size: 0.92rem; color: var(--muted); }
 
+/* Real screenshots, each in the frame it was taken in. */
+.screens { max-width: 1100px; margin: clamp(100px, 15vh, 150px) auto 0; padding-inline: var(--gutter); }
+.screens-head { display: grid; justify-items: center; gap: 14px; text-align: center; }
+.screens-grid { --gap: clamp(28px, 4vw, 48px); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap) clamp(20px, 3vw, 36px); margin-top: 44px; align-items: start; }
+.screens-grid:has(> :only-child) { grid-template-columns: minmax(0, 660px); justify-content: center; }
+.screens-grid--device { grid-template-columns: minmax(0, 3.1fr) minmax(0, 1fr); align-items: end; }
+.screen--full { grid-column: 1 / -1; }
+.screen--center { grid-column: 1 / -1; justify-self: center; width: calc(50% - clamp(10px, 1.5vw, 18px)); }
+.screen figure { display: grid; gap: 16px; }
+.screen figcaption { font-size: 0.92rem; color: var(--muted); text-align: center; text-wrap: balance; }
+.screen figcaption b { font-family: var(--mono); font-weight: 400; color: var(--orange); margin-right: 4px; }
+.screen-frame { transition: transform .5s var(--ease-out); }
+.screen:hover .screen-frame { transform: translateY(-6px); }
+.screen-frame img { display: block; width: 100%; height: auto; }
+.screen-frame--terminal img { filter: drop-shadow(0 24px 26px rgb(0 22 102 / 0.26)); }
+.screen-frame--browser { container-type: inline-size; }
+.screen-frame--browser .browser { --u: calc(100cqw / var(--page-w) * 1.18); width: 100%; }
+
+/* An iPhone running Safari: status bar, the page, and the floating address bar.
+   --p is one point of a 393-point-wide screen. */
+.phone { padding: 3.4%; border-radius: 15.5% / 7.2%; background: #1b1c1f; box-shadow: inset 0 0 0 1.5px #44464b, inset 0 0 0 4px #0b0b0c, 0 34px 60px -30px rgb(0 22 102 / 0.55); }
+.phone-screen { --p: calc(100cqw / 393); position: relative; container-type: inline-size; overflow: hidden; border-radius: 12.6% / 5.8%; background: var(--status); }
+.phone-status { position: relative; display: flex; align-items: center; justify-content: space-between; height: calc(var(--p) * 54); padding: calc(var(--p) * 4) calc(var(--p) * 30) 0 calc(var(--p) * 46); color: #000; }
+.phone-time { font: 600 calc(var(--p) * 17)/1 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif; letter-spacing: -0.02em; }
+.phone-island { position: absolute; top: calc(var(--p) * 11); left: 50%; width: calc(var(--p) * 125); height: calc(var(--p) * 37); border-radius: 999px; background: #000; transform: translateX(-50%); }
+.phone-icons { display: inline-flex; align-items: center; gap: calc(var(--p) * 6); }
+.phone-icons svg { height: calc(var(--p) * 12); width: auto; fill: currentColor; }
+.phone-icons svg:last-child { height: calc(var(--p) * 13); }
+.phone-bar { position: absolute; left: calc(var(--p) * 14); right: calc(var(--p) * 14); bottom: calc(var(--p) * 30); display: flex; align-items: center; gap: calc(var(--p) * 8); }
+.phone-btn, .phone-url { display: grid; place-items: center; height: calc(var(--p) * 48); border-radius: 999px; background: rgb(255 255 255 / 0.7); backdrop-filter: blur(10px) saturate(1.6); -webkit-backdrop-filter: blur(10px) saturate(1.6); box-shadow: 0 0 0 0.5px rgb(0 0 0 / 0.08), 0 6px 18px rgb(0 0 0 / 0.14); color: rgb(0 0 0 / 0.86); }
+.phone-btn { width: calc(var(--p) * 48); flex: none; }
+.phone-btn svg { width: calc(var(--p) * 17); height: calc(var(--p) * 17); fill: currentColor; }
+.phone-url { flex: 1; font: 500 calc(var(--p) * 15)/1 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif; letter-spacing: -0.01em; }
+.phone-home { position: absolute; left: 50%; bottom: calc(var(--p) * 8); width: calc(var(--p) * 134); height: calc(var(--p) * 5); border-radius: 999px; background: #000; transform: translateX(-50%); }
+
 .code { max-width: 920px; margin: clamp(100px, 15vh, 150px) auto 0; padding-inline: var(--gutter); text-align: center; }
 .code-window { margin-top: 36px; border-radius: 20px; overflow: hidden; background: #0d1330; text-align: left; box-shadow: 0 40px 70px -50px rgb(0 22 102 / 0.8); }
 .code-window figcaption { display: flex; align-items: center; gap: 14px; padding: 12px 18px; background: #182044; color: #aab4dc; font-family: var(--mono); font-size: 0.82rem; }
@@ -763,6 +798,9 @@ h1, h2, h3, p, figure, dl, dd { margin: 0; }
   .hero-icon--aware { top: 104px; right: -10px; }
   .gallery-head { flex-direction: column; align-items: center; text-align: center; }
   .nav { gap: 26px; padding: 9px 18px; }
+  .screens-grid, .screens-grid--device { grid-template-columns: minmax(0, 1fr); }
+  .screen--center { width: 100%; }
+  .screen-frame--phone { width: min(64%, 280px); margin: 0 auto; }
 }
 
 @media (max-width: 480px) {

@@ -277,6 +277,14 @@ export const projects = [
       ["0", "secrets sent to visitors", "Credentials stay on the server; the browser only ever sees the sanitized menu."],
       ["6", "weekdays at a glance", "Today through the same day next week, with calories for every dish."],
     ],
+    screens: {
+      layout: "device",
+      url: "lunch.truongson.me",
+      items: [
+        { frame: "browser", src: "lunch/thursday", bar: "#dedbd2", caption: "Pick a weekday to see its meals, with calories for every dish.", alt: "lunch.truongson.me in Safari showing Thursday's lunch and snack with calories" },
+        { frame: "phone", src: "lunch/phone", status: "#f3f0e8", caption: "The same menu on a phone.", alt: "lunch.truongson.me on an iPhone showing Monday's menu" },
+      ],
+    },
   },
   {
     slug: "teacher-day",
@@ -308,6 +316,16 @@ export const projects = [
       ["20/11", "Vietnamese Teachers' Day", "Launched for the day students traditionally thank their teachers."],
       ["1", "tree for the whole school", "Write a wish, browse every note, or search for one."],
     ],
+    screens: {
+      frame: "browser",
+      url: "vtec-teacher-day.web.app",
+      lede: "The tree shots use the site's demo mode, which fills it with 512 sample wishes.",
+      items: [
+        { src: "teacher-day/reader", bar: "#8386b0", span: "full", caption: "Open a note to read the whole wish, then flip through the rest.", alt: "A wish card opened in front of the wishing tree, note 307 of 512" },
+        { src: "teacher-day/peek", bar: "#a7aedb", caption: "Hover a note to peek at who wrote it and who it's for.", alt: "A preview bubble over one note on a tree full of colourful wishes" },
+        { src: "teacher-day/compose", bar: "#8386b0", caption: "Write a wish and hang it on the tree.", alt: "The Viết lời chúc form with fields for your name, your teachers and your wish" },
+      ],
+    },
   },
   {
     slug: "mediacontrol",
@@ -428,6 +446,15 @@ observer.observe(document.body, { childList: true, subtree: true });`,
       ["4", "sequence types", "Arithmetic, quadratic, cubic and prime."],
       ["10", "levels", "New types unlock at levels 3, 5 and 7."],
     ],
+    screens: {
+      frame: "terminal",
+      lede: "From one real game, run from the code on GitHub.",
+      items: [
+        { src: "mathchamp/correct", caption: "A right answer levels you up and shows the nth term.", alt: "MathChamp at level 3: the sequence 1, 10, 27, 52, 85 answered B, a quadratic sequence, 4n² - 3n" },
+        { src: "mathchamp/miss", caption: "A wrong one drops you a level.", alt: "MathChamp at level 6: a cubic sequence answered as quadratic, dropping to level 5" },
+        { src: "mathchamp/win", span: "center", caption: "Reach level 10 and it times your win.", alt: "MathChamp's ending: the game beaten in 0 minutes and 43 seconds" },
+      ],
+    },
     code: {
       file: "SequenceType.java",
       body: `public enum SequenceType {
@@ -469,6 +496,12 @@ observer.observe(document.body, { childList: true, subtree: true });`,
       ["40", "symbols", "Letters, digits, spaces and common punctuation."],
       ["2022", "where it started", "One of the first repositories on my GitHub."],
     ],
+    screens: {
+      frame: "terminal",
+      items: [
+        { src: "morse/jshell", caption: "Morse.java loaded into jshell: my name to Morse code and back again.", alt: "A jshell session encoding Truong Son to Morse code and decoding it back to truong son" },
+      ],
+    },
     code: {
       file: "Morse.java",
       body: `public static String toMorse(String str) {

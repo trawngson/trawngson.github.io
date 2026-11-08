@@ -42,8 +42,10 @@ python3 scripts/images.py ~/painting.png art/name-wide --widths 800,1200,1600,24
 ```
 
 Use AVIF (the default) for photos. Keep paintings in WebP: their texture
-needs as many bytes in AVIF to stay as crisp. Then pass the key (for example
-`people/new-photo`) in `src/content.mjs`.
+needs as many bytes in AVIF to stay as crisp. Screenshots of terminals and flat
+pages use `--format webp --lossless` at one full-size width: lossless keeps text
+exact, and the full-size file is usually smaller than any resized one. Then pass
+the key (for example `people/new-photo`) in `src/content.mjs`.
 
 ### Adding a project
 
@@ -51,6 +53,12 @@ Add an entry to `projects` in `src/content.mjs`. A project needs a `slug`, text
 fields, and a `cover`: `phones`, `object` or `image` for pictures, `browser` for a
 website screenshot, or one of the animated `tool-*` covers. Rebuild, and the
 works page, filters and project page appear automatically.
+
+To show real screenshots under "See it in action", give the project `screens`:
+each item is an image key and a caption, drawn in a `terminal` (the window is
+part of the image), a `browser` (a Safari window around the page) or a `phone`
+frame (an iPhone running Safari). `span: "full"` or `"center"` changes an item's
+width; `layout: "device"` pairs a browser with a phone.
 
 ## Motion and accessibility
 
