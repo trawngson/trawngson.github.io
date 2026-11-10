@@ -721,3 +721,23 @@
   })
   addEventListener("load", () => ScrollTrigger.refresh())
 })()
+
+;(() => {
+  if (location.hostname !== "truongson.me") return
+  try {
+    const s = localStorage
+    const now = Date.now()
+    const me = /[?&]me(?:=([^&]*))?/.exec(location.search)
+    if (me) me[1] === "off" ? s.removeItem("me") : s.setItem("me", "1")
+    const last = +s.getItem("t") || 0
+    s.setItem("t", now)
+    if (s.getItem("me") || now - last < 18e5 || navigator.webdriver) return
+  } catch {}
+  const ref = document.referrer.startsWith(location.origin) ? "" : document.referrer
+  fetch("https://postcard.sonntt-az.workers.dev", {
+    method: "POST",
+    mode: "no-cors",
+    keepalive: true,
+    body: JSON.stringify({ page: location.pathname, referrer: ref, language: navigator.language, screen: `${screen.width}x${screen.height}` }),
+  }).catch(() => {})
+})()
