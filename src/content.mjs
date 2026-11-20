@@ -255,9 +255,9 @@ export const projects = [
     categories: ["Web"],
     tags: ["Next.js", "TypeScript"],
     summary:
-      "lunch.truongson.me: the school lunch menu on one quiet page, today's meals and the next week at a glance, with calories for every dish.",
+      "lunch.truongson.me: my school's lunch menu on one quiet page, today's meals and the next week at a glance, with calories for every dish.",
     tagline:
-      "The school lunch menu on one quiet page: today's meals and the week ahead at a glance, with calories for every dish.",
+      "My school's lunch menu on one quiet page: today's meals and the week ahead at a glance, with calories for every dish.",
     cover: { type: "browser", src: "projects/lunch.webp", width: 1341, height: 845, bar: "#dedbd4", url: "lunch.truongson.me", alt: "The Lunch menu site showing Friday's meals with calories", tone: "paper" },
     meta: [
       ["Role", "Designer and developer"],
@@ -269,7 +269,8 @@ export const projects = [
       { label: "View on GitHub", href: "https://github.com/trawngson/lunch" },
     ],
     overview: [
-      "Lunch takes the school's weekly menu and puts it on one fast, desktop-friendly page: weekdays through the same day next week, every dish with its calories, and today highlighted.",
+      "Lunch takes my school's weekly menu and puts it on one fast, desktop-friendly page: weekdays through the same day next week, every dish with its calories, and today highlighted.",
+      "The menu only lives in a phone app, but we weren't allowed to use our phones at school, so I built this for my friends to open on their laptops instead. At first I only told two people about it; now it peaks at around 100 visits a day, which makes me really happy. It taught me how rewarding it is to build software that solves a small problem from real life.",
       "A server endpoint calls one fixed upstream menu endpoint using credentials kept in protected environment variables, sanitizes the response and returns only the menu, so the student code and token never reach visitors. Without credentials, the site falls back to a checked-in sample menu.",
       "It keeps itself current each morning and counts how many hungry visitors stopped by.",
     ],
@@ -297,7 +298,7 @@ export const projects = [
       "A wishing tree for Vietnamese Teachers' Day (20/11): students write kind words to their teachers and hang them on the tree.",
     tagline:
       "A wishing tree for Vietnamese Teachers' Day: students write kind words to their teachers and hang them on the tree.",
-    cover: { type: "browser", src: "projects/teacher-day.webp", width: 1356, height: 845, bar: "#a8afdb", url: "vtec-teacher-day.web.app", alt: "The Teacher Day wishing tree with notes hanging from its branches", tone: "lilac" },
+    cover: { type: "browser", src: "projects/teacher-day.webp", width: 1440, height: 900, bar: "#a7aedb", url: "vtec.codes", alt: "The Teacher Day wishing tree with 166 wishes hanging from its branches", tone: "lilac" },
     meta: [
       ["Role", "Co-developer"],
       ["With", "VTEC teammates"],
@@ -305,7 +306,7 @@ export const projects = [
       ["Status", "Live"],
     ],
     links: [
-      { label: "Open the wishing tree", href: "https://vtec-teacher-day.web.app" },
+      { label: "Open the wishing tree", href: "https://vtec.codes" },
       { label: "View on GitHub", href: "https://github.com/KernelxD/Teacher-Day" },
     ],
     overview: [
@@ -314,16 +315,16 @@ export const projects = [
     ],
     highlights: [
       ["20/11", "Vietnamese Teachers' Day", "Launched for the day students traditionally thank their teachers."],
-      ["1", "tree for the whole school", "Write a wish, browse every note, or search for one."],
+      ["160+", "wishes collected", "Kind words from students to their teachers, each one a note on the tree."],
     ],
     screens: {
       frame: "browser",
-      url: "vtec-teacher-day.web.app",
-      lede: "The tree shots use the site's demo mode, which fills it with 512 sample wishes.",
+      url: "vtec.codes",
+      lede: "Taken from the live tree on Teachers' Day, with the wishes students actually wrote.",
       items: [
-        { src: "teacher-day/reader", bar: "#8386b0", span: "full", caption: "Open a note to read the whole wish, then flip through the rest.", alt: "A wish card opened in front of the wishing tree, note 307 of 512" },
-        { src: "teacher-day/peek", bar: "#a7aedb", caption: "Hover a note to peek at who wrote it and who it's for.", alt: "A preview bubble over one note on a tree full of colourful wishes" },
-        { src: "teacher-day/compose", bar: "#8386b0", caption: "Write a wish and hang it on the tree.", alt: "The Viết lời chúc form with fields for your name, your teachers and your wish" },
+        { src: "teacher-day/reader", bar: "#8386b0", span: "full", caption: "Open a note to read the whole wish, then flip through the rest.", alt: "A wish to the science department opened in front of the wishing tree, note 70 of 166" },
+        { src: "teacher-day/peek", bar: "#a7aedb", caption: "Hover a note to peek at who wrote it and who it's for.", alt: "A preview bubble showing the sender, recipient and start of one wish on the tree" },
+        { src: "teacher-day/compose", bar: "#8386b0", caption: "Write a wish, pick your campus, and hang it on the tree.", alt: "The Viết lời chúc form with fields for your name, your teacher, your campus and your wish" },
       ],
     },
   },
