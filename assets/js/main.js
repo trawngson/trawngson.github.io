@@ -722,22 +722,53 @@
   addEventListener("load", () => ScrollTrigger.refresh())
 })()
 
+// Visit postcard: one email per visit (a visit ends after 30 idle minutes),
+// naming the page the visit started on. It is only sent once someone has
+// scrolled, clicked, tapped or pressed a key with real input AND the tab has
+// been on screen for 10 seconds, because scrapers load a page and leave.
 ;(() => {
-  if (location.hostname !== "truongson.me") return
+  if (location.hostname !== "truongson.me" || navigator.webdriver) return
+  const ref = document.referrer.startsWith(location.origin) ? "" : document.referrer
+  let visit = { page: location.pathname, referrer: ref }
+  let s = null
   try {
-    const s = localStorage
-    const now = Date.now()
+    s = localStorage
     const me = /[?&]me(?:=([^&]*))?/.exec(location.search)
     if (me) me[1] === "off" ? s.removeItem("me") : s.setItem("me", "1")
+    if (s.getItem("me")) return
+    const now = Date.now()
     const last = +s.getItem("t") || 0
     s.setItem("t", now)
-    if (s.getItem("me") || now - last < 18e5 || navigator.webdriver) return
+    if (now - last < 18e5) {
+      if (s.getItem("sent")) return
+      visit = JSON.parse(s.getItem("entry")) || visit
+    } else {
+      s.removeItem("sent")
+      s.setItem("entry", JSON.stringify(visit))
+    }
   } catch {}
-  const ref = document.referrer.startsWith(location.origin) ? "" : document.referrer
-  fetch("https://postcard.sonntt-az.workers.dev", {
-    method: "POST",
-    mode: "no-cors",
-    keepalive: true,
-    body: JSON.stringify({ page: location.pathname, referrer: ref, language: navigator.language, screen: `${screen.width}x${screen.height}` }),
-  }).catch(() => {})
+
+  const INPUT = ["wheel", "pointerdown", "touchstart", "keydown"]
+  let acted = false
+  let seconds = 0
+  const onInput = (event) => {
+    if (event.isTrusted) acted = true
+  }
+  INPUT.forEach((type) => addEventListener(type, onInput, { capture: true, passive: true }))
+  const timer = setInterval(() => {
+    if (document.visibilityState === "visible") seconds++
+    if (!acted || seconds < 10) return
+    clearInterval(timer)
+    INPUT.forEach((type) => removeEventListener(type, onInput, { capture: true }))
+    try {
+      if (s?.getItem("sent")) return
+      s?.setItem("sent", "1")
+    } catch {}
+    fetch("https://postcard.sonntt-az.workers.dev", {
+      method: "POST",
+      mode: "no-cors",
+      keepalive: true,
+      body: JSON.stringify({ ...visit, language: navigator.language, screen: `${screen.width}x${screen.height}` }),
+    }).catch(() => {})
+  }, 1000)
 })()
