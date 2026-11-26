@@ -768,7 +768,12 @@
       method: "POST",
       mode: "no-cors",
       keepalive: true,
-      body: JSON.stringify({ ...visit, language: navigator.language, screen: `${screen.width}x${screen.height}` }),
+      body: JSON.stringify({
+        ...visit,
+        language: navigator.language,
+        screen: `${screen.width}x${screen.height}`,
+        timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      }),
     }).catch(() => {})
   }, 1000)
 })()
